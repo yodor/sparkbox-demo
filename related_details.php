@@ -36,7 +36,7 @@ if (isset($_GET["piID"])) {
 
 $sellable = array();
 
-$db = DBDriver::Get();
+$db = DBConnections::Get();
 $res = NULL;
 try {
 
@@ -128,7 +128,7 @@ foreach ($sellable as $pos => $row) {
         if ($pclrID > 0) {
             $res = $db->query("SELECT pclrpID FROM product_color_photos WHERE pclrID=$pclrID ORDER BY position ASC");
             if (!$res) throw new Exception("Unable to query color gallery: " . $db->getError());
-            if ($db->numRows($res) < 1) $use_photos = true;
+            if ($res->num_rows < 1) $use_photos = true;
             while ($grow = $db->fetch($res)) {
                 $item = array("id" => $grow["pclrpID"], "class" => "ProductColorPhotosBean");
                 $galleries[$pclrID][] = $item;
@@ -199,7 +199,7 @@ echo "<div class='image_gallery'>";
 foreach ($galleries as $pclrID => $gallery) {
     echo "<div class='list' pclrID='$pclrID'>";
     foreach ($gallery as $key => $item) {
-        $href_source = STORAGE_HREF . "?cmd=image&width=110&height=110";
+        $href_source = STORAGE_LOCAL . "?cmd=image&width=110&height=110";
 
         $href = $href_source . "&class=" . $item["class"] . "&id=" . $item["id"];
 

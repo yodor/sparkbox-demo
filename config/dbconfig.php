@@ -14,7 +14,7 @@ $prop->is_pdo = false;
 
 
 $prop->setConnectionName("default");
-DBConnections::addConnection($prop);
+DBConnections::addProperties($prop);
 
 
 // $prop1 = new DBConnectionProperties();

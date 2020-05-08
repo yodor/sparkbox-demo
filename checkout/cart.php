@@ -22,7 +22,7 @@ if (isset($_GET["addItem"])) {
         $item = $products->getByID($prodID);
         if ($item["stock_amount"] < 1) {
             Session::SetAlert(tr("Съжаляваме в момента няма наличност от този продукт"));
-            header("Location: " . SITE_ROOT . "details.php?prodID=" . $prodID);
+            header("Location: " . LOCAL . "details.php?prodID=" . $prodID);
             exit;
         }
 
@@ -62,7 +62,7 @@ if (isset($_GET["deleteAll"])) {
 else if (isset($_GET["continue_shopping"])) {
     if (isset($_SESSION["last_added"])) {
         $prodID = (int)$_SESSION["last_added"];
-        header("Location: " . SITE_ROOT . "details.php?prodID=" . $prodID);
+        header("Location: " . LOCAL . "details.php?prodID=" . $prodID);
         exit;
     }
 }
@@ -99,7 +99,7 @@ if ($page->total) {
 
     echo "<div class='slot right'>";
     echo "<a href='customer.php'>";
-    echo "<img src='" . SITE_ROOT . "images/cart_checkout.png'>";
+    echo "<img src='" . LOCAL . "images/cart_checkout.png'>";
     echo "<div class='checkout_button'  >" . tr("Checkout") . "</div>";
     echo "</a>";
     echo "</div>";
@@ -107,13 +107,13 @@ if ($page->total) {
 
     echo "<div class='slot left'>";
     echo "<a href='cart.php?deleteAll'>";
-    echo "<img src='" . SITE_ROOT . "images/cart_clear.png'>";
+    echo "<img src='" . LOCAL . "images/cart_clear.png'>";
     echo "<div class='checkout_button'  >" . tr("Empty Cart") . "</div>";
     echo "</a>";
     echo "</div>";
 
     echo "<div class='slot center'>";
-    echo "<a class='DefaultButton' href='" . SITE_ROOT . "home.php'>";
+    echo "<a class='DefaultButton' href='" . LOCAL . "home.php'>";
     echo tr("Продължи пазаруването");
     echo "</a>";
     echo "</div>";

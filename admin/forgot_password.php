@@ -1,12 +1,11 @@
 <?php
 include_once("session.php");
+
 include_once("input/DataInputFactory.php");
 include_once("pages/AdminLoginPage.php");
 
 include_once("input/validators/EmailValidator.php");
 include_once("beans/AdminUsersBean.php");
-
-
 include_once("mailers/ForgotPasswordMailer.php");
 
 $page = new AdminLoginPage();
@@ -33,8 +32,8 @@ if (isset($_POST["request_password"])) {
         $users = new AdminUsersBean();
 
         $random_pass = Authenticator::RandomToken(8);
-        $fpm = new ForgotPasswordMailer($fp->getValue(), $random_pass, SITE_DOMAIN . SITE_ROOT . "admin/login.php");
-        $db = DBDriver::Get();
+        $fpm = new ForgotPasswordMailer($fp->getValue(), $random_pass, SITE_DOMAIN . LOCAL . "admin/login.php");
+        $db = DBConnections::Get();
         try {
             $db->transaction();
 

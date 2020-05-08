@@ -7,9 +7,9 @@ include_once("class/beans/GalleryPhotosBean.php");
 
 
 $page = new DemoPage();
-$page->addCSS(SPARKFRONT . "css/GalleryTape.css");
-$page->addJS(SPARKFRONT . "js/GalleryTape.js");
-$page->addJS(SPARKFRONT . "js/GalleryView.js");
+$page->addCSS(SPARK_LOCAL . "/css/GalleryTape.css");
+$page->addJS(SPARK_LOCAL . "/js/GalleryTape.js");
+$page->addJS(SPARK_LOCAL . "/js/GalleryView.js");
 
 $bean = new GalleryPhotosBean();
 $qry = $bean->query();

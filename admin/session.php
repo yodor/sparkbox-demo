@@ -25,11 +25,11 @@ foreach ($all_roles as $key => $val) {
 include_once("utils/MenuItem.php");
 $admin_menu = array();
 
-$admin_menu[] = new MenuItem("Store", ADMIN_ROOT . "store/index.php", "class:store");
+$admin_menu[] = new MenuItem("Store", ADMIN_LOCAL . "store/index.php", "class:store");
 
-$admin_menu[] = new MenuItem("Content", ADMIN_ROOT . "content/index.php", "class:icon_content");
+$admin_menu[] = new MenuItem("Content", ADMIN_LOCAL . "content/index.php", "class:icon_content");
 
-$admin_menu[] = new MenuItem("Settings", ADMIN_ROOT . "settings/index.php", "class:icon_settings");
+$admin_menu[] = new MenuItem("Settings", ADMIN_LOCAL . "settings/index.php", "class:icon_settings");
 
 
 ?>

@@ -28,7 +28,7 @@ class ProductsPage extends DemoPage
 
         $this->derived = $derived;
 
-        $this->addCSS(SITE_ROOT . "css/ProductsPage.css");
+        $this->addCSS(LOCAL . "css/ProductsPage.css");
     }
 
     public function renderCategoryPath($nodeID)
@@ -41,7 +41,7 @@ class ProductsPage extends DemoPage
             $category_path = $this->product_categories->parentCategories($nodeID);
         }
 
-        $root_path = SITE_ROOT . "related_tree.php"; //$_SERVER["SCRIPT_NAME"]; //SITE_ROOT."products/list.php";
+        $root_path = LOCAL . "related_tree.php"; //$_SERVER["SCRIPT_NAME"]; //LOCAL."products/list.php";
 
         $root_title = tr("Home");
         $root_action = new Action($root_title, $root_path, array());
@@ -70,7 +70,7 @@ class ProductsPage extends DemoPage
         foreach ($category_path as $idx => $category) {
             $qarr["catID"] = $category["catID"];
 
-            $link = SITE_ROOT . "related_tree.php" . queryString($qarr);
+            $link = LOCAL . "related_tree.php" . queryString($qarr);
             $actions[] = new Action($category["category_name"], $link, array());
 
         }

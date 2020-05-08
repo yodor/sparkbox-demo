@@ -80,8 +80,8 @@ class ProductListItem extends ItemRendererImpl
 
         // 		echo $this->sel->getSQL();
 
-        $product_href = SITE_ROOT . "related_details.php?prodID={$this->item["prodID"]}";
-        $item_href = SITE_ROOT . "related_details.php?prodID={$this->item["prodID"]}&piID=";
+        $product_href = LOCAL . "related_details.php?prodID={$this->item["prodID"]}";
+        $item_href = LOCAL . "related_details.php?prodID={$this->item["prodID"]}&piID=";
 
         $item_href_main = $item_href . $this->item["piID"];
         echo "<a href='$item_href_main' class='product_link'>";
@@ -103,7 +103,7 @@ class ProductListItem extends ItemRendererImpl
 
             echo "<div class='color_chips'>";
 
-            $db = DBDriver::Get();
+            $db = DBConnections::Get();
 
             foreach ($this->colors as $idx => $pclrID) {
 

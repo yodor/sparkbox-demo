@@ -172,7 +172,7 @@ $price_select->from = " ($derived_table) as relation ";
 $price_info["price_range"] = $proc->applyFiltersOn($treeView, $price_select, "price_range", true);
 
 
-$db = DBDriver::Get();
+$db = DBConnections::Get();
 $res = $db->query($price_select->getSQL());
 if (!$res) throw new Exception ($db->getError());
 if ($row = $db->fetch($res)) {

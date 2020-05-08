@@ -7,7 +7,7 @@ include_once("class/beans/NewsItemsBean.php");
 include_once("components/PublicationArchiveComponent.php");
 
 $page = new DemoPage();
-$page->addCSS(SITE_ROOT . "css/news.css");
+$page->addCSS(LOCAL . "css/news.css");
 
 
 $nb = new NewsItemsBean();
@@ -21,7 +21,7 @@ if (isset($_GET[$prkey])) {
 
 $qry = $nb->queryField($prkey,$itemID, 1);
 
-$pac = new PublicationArchiveComponent(new NewsItemsBean(), SITE_ROOT . "news.php");
+$pac = new PublicationArchiveComponent(new NewsItemsBean(), LOCAL . "news.php");
 
 
 $selected_year = $pac->getYear();
@@ -103,7 +103,7 @@ function drawLatestNews($num, $selected_year = false, $selected_month = false)
 
     while ($item_row = $qry->next()) {
         $itemID = $item_row[$nb->key()];
-        echo "<a class='item' newsID='$itemID' href='" . SITE_ROOT . "news.php?newsID=$itemID'>";
+        echo "<a class='item' newsID='$itemID' href='" . LOCAL . "news.php?newsID=$itemID'>";
 
         echo "<div class='cell image'>";
         $img_href = StorageItem::Image($itemID, $nb, 48, 48);

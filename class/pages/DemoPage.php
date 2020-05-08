@@ -23,43 +23,43 @@ class DemoPage extends SparkPage
         $menu = new MainMenu();
 
         $arr = array();
-        $item = new MenuItem("Controls", SITE_ROOT . "controls.php");
+        $item = new MenuItem("Controls", LOCAL . "controls.php");
         $arr[] = $item;
 
-        $item1 = new MenuItem("Array Controls", SITE_ROOT . "array_controls.php");
+        $item1 = new MenuItem("Array Controls", LOCAL . "array_controls.php");
         $item->addMenuItem($item1);
-        $item2 = new MenuItem("AJAX Upload", SITE_ROOT . "ajax_upload.php");
+        $item2 = new MenuItem("AJAX Upload", LOCAL . "ajax_upload.php");
         $item->addMenuItem($item2);
-        $item3 = new MenuItem("Upload", SITE_ROOT . "upload_controls.php");
+        $item3 = new MenuItem("Upload", LOCAL . "upload_controls.php");
         $item->addMenuItem($item3);
 
 
-        $arr[] = new MenuItem("Popups", SITE_ROOT . "popups.php");
+        $arr[] = new MenuItem("Popups", LOCAL . "popups.php");
 
-        $item = new MenuItem("Gallery", SITE_ROOT . "gallery.php");
+        $item = new MenuItem("Gallery", LOCAL . "gallery.php");
         $arr[] = $item;
-        $item1 = new MenuItem("Styled Gallery Popup", SITE_ROOT . "gallery_custom.php");
+        $item1 = new MenuItem("Styled Gallery Popup", LOCAL . "gallery_custom.php");
         $item->addMenuItem($item1);
 
-        $arr[] = new MenuItem("MCE Image Browser", SITE_ROOT . "mce_browser.php");
+        $arr[] = new MenuItem("MCE Image Browser", LOCAL . "mce_browser.php");
 
-        $menus = new MenuItem("Menus", SITE_ROOT . "menu.php");
+        $menus = new MenuItem("Menus", LOCAL . "menu.php");
         $arr[] = $menus;
 
-        $db_menu = new MenuItem("DB Menu", SITE_ROOT . "db_menu.php");
+        $db_menu = new MenuItem("DB Menu", LOCAL . "db_menu.php");
         $menus->addMenuItem($db_menu);
 
-        $item = new MenuItem("Tree View", SITE_ROOT . "tree.php");
+        $item = new MenuItem("Tree View", LOCAL . "tree.php");
         $arr[] = $item;
 
-        $item1 = new MenuItem("Aggregate Tree", SITE_ROOT . "related_tree.php");
+        $item1 = new MenuItem("Aggregate Tree", LOCAL . "related_tree.php");
         $item->addMenuItem($item1);
 
 
-        $arr[] = new MenuItem("Fonts", SITE_ROOT . "fonts.php");
-        $arr[] = new MenuItem("CSS3", SITE_ROOT . "css3.php");
+        $arr[] = new MenuItem("Fonts", LOCAL . "fonts.php");
+        $arr[] = new MenuItem("CSS3", LOCAL . "css3.php");
 
-        $arr[] = new MenuItem("Publications", SITE_ROOT . "news.php");
+        $arr[] = new MenuItem("Publications", LOCAL . "news.php");
 
         $menu->setMenuItems($arr);
 
@@ -73,7 +73,7 @@ class DemoPage extends SparkPage
 
         $this->addMeta("viewport", "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0");
 
-        $this->addCSS(SITE_ROOT. "css/demo.css");
+        $this->addCSS(LOCAL. "css/demo.css");
         $this->addCSS("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css");
 
         $this->addJS("//code.jquery.com/ui/1.11.4/jquery-ui.js");

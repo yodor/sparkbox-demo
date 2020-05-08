@@ -5,11 +5,11 @@ include_once("class/pages/DemoPage.php");
 
 
 $page = new DemoPage();
-$page->addCSS(SITE_ROOT . "css/css3.css");
-$page->addCSS( SITE_ROOT . "css/jquery.mCustomScrollbar.css");
+$page->addCSS(LOCAL . "css/css3.css");
+$page->addCSS( LOCAL . "css/jquery.mCustomScrollbar.css");
 $page->addJS("//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js");
-$page->addJS(SITE_ROOT . "js/jqplugins/jquery.mousewheel.min.js");
-$page->addJS(SITE_ROOT . "js/jqplugins/jquery.mCustomScrollbar.js");
+$page->addJS(LOCAL . "js/jqplugins/jquery.mousewheel.min.js");
+$page->addJS(LOCAL . "js/jqplugins/jquery.mCustomScrollbar.js");
 
 
 $page->startRender();
