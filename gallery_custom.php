@@ -9,7 +9,6 @@ include_once("class/beans/GalleryPhotosBean.php");
 $page = new DemoPage();
 $page->addCSS(SPARK_LOCAL . "/css/GalleryTape.css");
 $page->addJS(SPARK_LOCAL . "/js/GalleryTape.js");
-$page->addJS(SPARK_LOCAL . "/js/GalleryView.js");
 
 $bean = new GalleryPhotosBean();
 $qry = $bean->query();
@@ -37,7 +36,7 @@ while ($row = $qry->next()) {
     $img_href = StorageItem::Image($itemID, $bean, -1, 160);
     $popup_href = StorageItem::Image($itemID, $bean);
 
-    echo "<a class='image_popup' href='$popup_href' rel='collection1'>";
+    echo "<a class='ImagePopup' href='$popup_href' rel='collection1'>";
     echo "<img src='$img_href'>";
     echo "</a>";
 
@@ -90,7 +89,7 @@ echo "</div>";
         }
     </style>
     <script type='text/javascript'>
-        GalleryView.prototype.processPopupContents = function (html) {
+        ImagePopup.prototype.processPopupContents = function (html) {
 
             var contents = $(html);
             contents.find(".Inner .Contents").prepend("<a class='Button' action='CloseImagePopup'>X</a>");

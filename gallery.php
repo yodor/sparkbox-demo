@@ -8,7 +8,6 @@ include_once("class/beans/GalleryPhotosBean.php");
 $page = new DemoPage();
 $page->addCSS(SPARK_LOCAL . "/css/GalleryTape.css");
 $page->addJS(SPARK_LOCAL . "/js/GalleryTape.js");
-$page->addJS(SPARK_LOCAL . "/js/GalleryView.js");
 
 
 $bean = new GalleryPhotosBean();
@@ -37,7 +36,7 @@ while ($row = $qry->next()) {
     $img_href = StorageItem::Image($itemID, $bean, -1, 160);
     $popup_href = StorageItem::Image($itemID, $bean);
 
-    echo "<a class='image_popup' href='$popup_href' name='gallery_tape." . $pos . "' rel='collection2'>";
+    echo "<a class='ImagePopup' href='$popup_href' name='gallery_tape." . $pos . "' rel='collection2'>";
     echo "<img src='$img_href'>";
     echo "</a>";
 

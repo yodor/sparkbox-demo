@@ -69,11 +69,11 @@
   max-width: 100% !important;
   width:100% !important;
 }
-.ListView {
+.ItemView {
   display:block !important;
   max-width: 100% !important;
 }
-.ListView .viewport {
+.ItemView .viewport {
   text-align:center;
 }
 .ProductListItem {

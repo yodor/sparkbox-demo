@@ -88,7 +88,7 @@ FORM[name='filters'] {
 
 }
 
-.ListView .viewport {
+.ItemView .viewport {
     margin-left: -5px;
     margin-right: -5px;
 }

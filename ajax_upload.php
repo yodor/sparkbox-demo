@@ -11,22 +11,22 @@ $page = new DemoPage();
 $form = new InputForm();
 
 $input = DataInputFactory::Create(DataInputFactory::SESSION_IMAGE, "photo", "Photo", 1);
-$input->getValueTransactor()->max_slots = 4;
+$input->getProcessor()->max_slots = 4;
 $form->addInput($input);
 
 $input = DataInputFactory::Create(DataInputFactory::SESSION_FILE, "document", "Document", 1);
-$input->getValueTransactor()->max_slots = 4;
+$input->getProcessor()->max_slots = 4;
 $form->addInput($input);
 
-$form_render = new FormRenderer();
+$form_render = new FormRenderer($form);
 $form->setRenderer($form_render);
 $form->setProcessor(new FormProcessor());
-$form->getProcessor()->processForm($form);
+$form->getProcessor()->process($form);
 
 
 $page->startRender();
 
-$form_render->renderForm($form);
+$form_render->render();
 
 $page->finishRender();
 ?>

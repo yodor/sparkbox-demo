@@ -5,7 +5,6 @@ include_once("forms/InputForm.php");
 
 $page = new DemoPage();
 
-
 $form = new InputForm();
 
 $input = DataInputFactory::Create(DataInputFactory::MCE_TEXTAREA, "text", "Text", 1);
@@ -15,17 +14,15 @@ $handler = $input->getRenderer()->getImageBrowser()->getHandler();
 $handler->setSection("mce_image_demo", "text");
 $handler->setOwnerID(-1);
 
+$form_render = new FormRenderer($form);
+$form_render->setLayout(FormRenderer::FIELD_VBOX);
 
-$form_render = new FormRenderer(FormRenderer::FIELD_VBOX);
-$form->setRenderer($form_render);
 $form->setProcessor(new FormProcessor());
-$form->getProcessor()->processForm($form);
-
+$form->getProcessor()->process($form);
 
 $page->startRender();
 
-$form_render->renderForm($form);
-
+$form_render->render();
 
 $page->finishRender();
 ?>
