@@ -352,7 +352,7 @@ catch (Exception $e) {
 
 echo "</form>";
 
-echo "<button class='DefaultButton' onClick='javascript:clearFilters()'>" . tr("Clear Refinements") . "</button>";
+echo "<button class='ColorButton' onClick='javascript:clearFilters()'>" . tr("Clear Refinements") . "</button>";
 
 echo "</div>";//filters
 

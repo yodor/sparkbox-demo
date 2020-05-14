@@ -29,7 +29,7 @@ $gv = new GalleryView($bean);
 $gv->setCaption("Sample Photo Gallery Items");
 
 $page->startRender($menu);
-$page->renderPageCaption();
+
 
 $gv->render();
 

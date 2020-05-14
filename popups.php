@@ -18,13 +18,13 @@ $page->startRender();
 
 $field1->getRenderer()->render();
 echo "<BR>";
-StyledButton::DefaultButton()->renderButton("Show Message", "javascript:onShowMessage(this)");
+ColorButton::RenderButton("Show Message", "javascript:onShowMessage(this)");
 
 echo "<HR>";
 
 $field2->getRenderer()->render();
 echo "<BR>";
-StyledButton::DefaultButton()->renderButton("Show Confirm", "javascript:onShowConfirm(this)");
+ColorButton::RenderButton("Show Confirm", "javascript:onShowConfirm(this)");
 ?>
     <script type='text/javascript'>
         function onShowMessage() {

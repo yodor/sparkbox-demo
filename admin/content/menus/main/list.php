@@ -43,7 +43,7 @@ $tv->setItemIterator(new SQLQuery($bean->selectTree(array("menu_title")), $bean-
 
 $page->startRender($menu);
 
-$page->renderPageCaption();
+
 
 $tv->render();
 

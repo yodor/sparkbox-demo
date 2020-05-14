@@ -22,9 +22,11 @@ try {
     @include_once("beans/$page_class.php");
     $b = new $page_class;
 
+    if (!$b instanceof DBTableBean) throw new Exception("Incorrect bean class");
+
     $prkey = $b->key();
 
-    $qry = $qry->queryField($prkey, $page_id, 1);
+    $qry = $b->queryField($prkey, $page_id, 1);
     $qry->select->fields = " item_title, content, visible ";
     $num = $qry->exec();
     if ($num < 1) throw new Exception("This page is not available.");
@@ -80,7 +82,7 @@ $qry = $dpp->queryField("dpID", $page_id, 1);
 $qry->select->fields = " ppID, caption ";
 $num_photos = $qry->exec();
 
-if ($num_photos && $dprow = $dpp->next()) {
+if ($num_photos && $dprow = $qry->next()) {
     $photo_id = $dpprow["ppID"];
 
     echo "<div class='photo_item' id='$photo_id' class='DynamicPagePhotosBean'>";
