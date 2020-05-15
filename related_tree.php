@@ -9,7 +9,7 @@ include_once("class/beans/ProductCategoriesBean.php");
 include_once("class/beans/ProductsBean.php");
 include_once("class/beans/ProductPhotosBean.php");
 include_once("components/TableView.php");
-include_once("components/KeywordSearchComponent.php");
+include_once("components/KeywordSearch.php");
 include_once("iterators/SQLQuery.php");
 include_once("utils/RelatedSourceFilterProcessor.php");
 include_once("class/beans/ProductColorPhotosBean.php");
@@ -57,7 +57,7 @@ $proc = new RelatedSourceFilterProcessor("prodID");
 $search_fields = array("relation.product_code", "relation.product_name", "relation.product_description",
                        "relation.keywords");
 
-$ksc = new KeywordSearchComponent($search_fields, "relation");
+$ksc = new KeywordSearch($search_fields, "relation");
 $ksc->getForm()->getRenderer()->setAttribute("method", "get");
 
 $proc->addFilter("keyword", $ksc);
