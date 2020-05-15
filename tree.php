@@ -16,7 +16,7 @@ $ir = new TextTreeItem();
 // $ir->addAction(new Action("Down", "?cmd=reposition&direction=right", array(new ActionParameter("item_id", $bean->key()))));
 
 $ir->addAction(new Action("Edit", "tree.php", array(//       new ActionParameter($bean->key(), $bean->key()),
-                                                    new ActionParameter("editID", $bean->key()),)));
+                                                    new DataParameter("editID", $bean->key()),)));
 
 $ir->setLabelKey("category_name");
 
@@ -26,7 +26,7 @@ $tv->setItemRenderer($ir);
 
 $tv->setName("demo_tree");
 $tv->open_all = FALSE;
-$tv->setItemIterator(new SQLQuery($bean->selectTree(array("category_name")), $bean->key(), $bean->getTableName()));
+$tv->setIterator(new SQLQuery($bean->selectTree(array("category_name")), $bean->key(), $bean->getTableName()));
 
 $proc = new NestedSetFilterProcessor();
 $proc->process($tv);

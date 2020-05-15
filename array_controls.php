@@ -35,7 +35,7 @@ $selectField->allow_dynamic_addition = true;
 
 $select_items = new ArrayDataIterator(array("Select Item 1", "Select Item 2", "Select Item 3"));
 $sr = new SelectField($selectField);
-$sr->setItemIterator($select_items);
+$sr->setIterator($select_items);
 $sr->getItemRenderer()->setValueKey( ArrayDataIterator::KEY_ID);
 $sr->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 new ArrayField($sr);
@@ -51,7 +51,7 @@ $checkField->allow_dynamic_addition = true;
 
 $check_items = new ArrayDataIterator(array("CItem1", "CItem2", "CItem3"));
 $cr = new CheckField($checkField);
-$cr->setItemIterator($check_items);
+$cr->setIterator($check_items);
 $cr->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_VALUE);
 $cr->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
@@ -69,7 +69,7 @@ $radioField->setValidator(new EmptyValueValidator());
 
 $radio_items = new ArrayDataIterator(array("RItem1", "RItem2", "RItem3"));
 $rr = new RadioField($radioField);
-$rr->setItemIterator($radio_items);
+$rr->setIterator($radio_items);
 $rr->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_VALUE);
 $rr->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 

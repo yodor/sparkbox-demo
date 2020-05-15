@@ -27,7 +27,7 @@ $aw2 = new ArrayDataIterator(array("SelectItem1", "SelectItem2", "SelectItem3"))
 
 $f4 = new DataInput("field4", "Select", 1);
 $scmp = new SelectField($f4);
-$scmp->setItemIterator($aw2);
+$scmp->setIterator($aw2);
 $scmp->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_ID);
 $scmp->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
@@ -37,7 +37,7 @@ $aw3 = new ArrayDataIterator(array("SelectMultiItem1", "SelectMultiItem2", "Sele
 
 $f4m = new DataInput("field4m", "Select Multi", 1);
 $scmp1 = new SelectMultipleField($f4m);
-$scmp1->setItemIterator($aw3);
+$scmp1->setIterator($aw3);
 $scmp1->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_ID);
 $scmp1->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
@@ -67,7 +67,7 @@ $f11->setValidator(new EmptyValueValidator());
 new InputProcessor($f11);
 
 $cf2 = new CheckField($f11);
-$cf2->setItemIterator($aw);
+$cf2->setIterator($aw);
 $cf2->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_VALUE);
 $cf2->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
@@ -82,7 +82,7 @@ $validator->require_array_value = TRUE;
 $f11->setValidator($validator);
 
 $cf3 = new CheckField($f11);
-$cf3->setItemIterator($aw);
+$cf3->setIterator($aw);
 $cf3->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_VALUE);
 $cf3->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
@@ -93,7 +93,7 @@ $form->addInput($f11);
 $aw1 = new ArrayDataIterator(array("RadioItem1", "RadioItem2", "RadioItem3"));
 $f12 = new DataInput("field12", "Radiobox DataSource", 1);
 $rf = new RadioField($f12);
-$rf->setItemIterator($aw1);
+$rf->setIterator($aw1);
 $rf->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_VALUE);
 $rf->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
@@ -101,7 +101,7 @@ $f12->setValidator(new EmptyValueValidator());
 new InputProcessor($f12);
 $form->addInput($f12);
 
-$f7 = new DataInput("field7", "Date", 1);
+$f7 = new DataInput("field7", "Date", 0);
 $df = new DateField($f7);
 $f7->setValidator(new DateValidator());
 new DateInput($f7);

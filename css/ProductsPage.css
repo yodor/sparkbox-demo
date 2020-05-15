@@ -1,8 +1,8 @@
-.caption.category_path .ActionRenderer {
+.caption.category_path .Action {
     font-size: 1.2em;
 }
 
-.caption.category_path .ActionRenderer:after {
+.caption.category_path .Action:after {
     content: "//";
     padding-left: 5px;
     padding-right: 5px;

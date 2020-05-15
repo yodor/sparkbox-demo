@@ -14,7 +14,7 @@ class FAQItemInputForm extends InputForm
 
         $enm = new DBEnumIterator("faq_items", "section");
         $rend = $field->getRenderer();
-        $rend->setItemIterator($enm);
+        $rend->setIterator($enm);
         $rend->getItemRenderer()->setValueKey("section");
         $rend->getItemRenderer()->setLabelKey("section");
 

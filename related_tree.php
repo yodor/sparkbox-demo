@@ -30,7 +30,7 @@ $ir->setTextAction(new Action("Text Action", "related_tree.php?filter=self", arr
 $treeView = new NestedSetTreeView();
 $treeView->setItemRenderer($ir);
 
-$treeView->setItemIterator(new SQLQuery($bean->selectTree(array("category_name")), $bean->key(), $bean->getTableName()));
+$treeView->setIterator(new SQLQuery($bean->selectTree(array("category_name")), $bean->key(), $bean->getTableName()));
 
 $treeView->setName("demo_tree");
 $treeView->open_all = FALSE;
@@ -249,7 +249,7 @@ echo "<div class='column left'>";
 
 echo "<div class='categories'>";
 //   if ($num_filters>0) {
-// 	echo "<a class='ActionRenderer Clear' href='javascript:clearFilters()'>Show All Categories</a>";
+// 	echo "<a class='Action Clear' href='javascript:clearFilters()'>Show All Categories</a>";
 //   }
 $treeView->render();
 echo "</div>"; //tree
@@ -269,7 +269,7 @@ echo "<span class='label'>" . tr("Brand") . "</span>";
 
 $field = DataInputFactory::Create(DataInputFactory::SELECT, "brand_name", "Brands", 0);
 $rend = $field->getRenderer();
-$rend->setItemIterator(ArrayDataIterator::FromSelect($brand_select, "brand_name", "brand_name"));
+$rend->setIterator(ArrayDataIterator::FromSelect($brand_select, "brand_name", "brand_name"));
 $rend->getItemRenderer()->setValueKey("brand_name");
 $rend->getItemRenderer()->setLabelKey("brand_name");
 $rend->setInputAttribute("onChange", "javascript:filterChanged(this)");
@@ -282,7 +282,7 @@ echo "<div class='InputComponent'>";
 echo "<span class='label'>" . tr("Color") . "</span>";
 $field = DataInputFactory::Create(DataInputFactory::SELECT, "color", "Colors", 0);
 $rend = $field->getRenderer();
-$rend->setItemIterator(ArrayDataIterator::FromSelect($color_select, "color", "color"));
+$rend->setIterator(ArrayDataIterator::FromSelect($color_select, "color", "color"));
 $rend->getItemRenderer()->setValueKey("color");
 $rend->getItemRenderer()->setLabelKey("color");
 $rend->setInputAttribute("onChange", "javascript:filterChanged(this)");
@@ -295,7 +295,7 @@ echo "<div class='InputComponent'>";
 echo "<span class='label'>" . tr("Sizing") . "</span>";
 $field = DataInputFactory::Create(DataInputFactory::SELECT, "size_value", "Sizing", 0);
 $rend = $field->getRenderer();
-$rend->setItemIterator(ArrayDataIterator::FromSelect($size_select, "size_value", "size_value"));
+$rend->setIterator(ArrayDataIterator::FromSelect($size_select, "size_value", "size_value"));
 $rend->getItemRenderer()->setValueKey("size_value");
 $rend->getItemRenderer()->setLabelKey("size_value");
 $rend->setInputAttribute("onChange", "javascript:filterChanged(this)");
@@ -335,7 +335,7 @@ try {
         $rend = $field->getRenderer();
         $sel = $item["select"];
         // 		echo $sel->getSQL();
-        $rend->setItemIterator(ArrayDataIterator::FromSelect($item["select"], "ia_value", "ia_value"));
+        $rend->setIterator(ArrayDataIterator::FromSelect($item["select"], "ia_value", "ia_value"));
         $rend->getItemRenderer()->setValueKey("ia_value");
         $rend->getItemRenderer()->setLabelKey("ia_value");
         $rend->setInputAttribute("onChange", "javascript:filterChanged(this, 'ia', true)");
