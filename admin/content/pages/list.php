@@ -102,7 +102,6 @@ $page->startRender($menu);
 // echo tr("Dynamic Pages");
 // echo "</div>";
 
-
 $view->render();
 if (isset($_GET["chooser"])) unset($_GET["chooser"]);
 

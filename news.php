@@ -9,7 +9,6 @@ include_once("components/PublicationArchiveComponent.php");
 $page = new DemoPage();
 $page->addCSS(LOCAL . "css/news.css");
 
-
 $nb = new NewsItemsBean();
 $prkey = $nb->key();
 
@@ -19,10 +18,9 @@ if (isset($_GET[$prkey])) {
     $itemID = (int)$_GET[$prkey];
 }
 
-$qry = $nb->queryField($prkey,$itemID, 1);
+$qry = $nb->queryField($prkey, $itemID, 1);
 
 $pac = new PublicationArchiveComponent(new NewsItemsBean(), LOCAL . "news.php");
-
 
 $selected_year = $pac->getYear();
 $selected_month = $pac->getMonth();
@@ -35,9 +33,7 @@ if ($pac->haveSelection()) {
 
 $qry->exec();
 
-
 $page->startRender();
-
 
 echo "<div class='news_view'>";
 
@@ -53,7 +49,7 @@ while ($item_row = $qry->next()) {
     echo "</div>";
 
     echo "<div class='date'>";
-    echo dateFormat($item_row["item_date"], false);
+    echo dateFormat($item_row["item_date"], FALSE);
     echo "</div>";
 
     echo "<div class='content'>";
@@ -86,17 +82,14 @@ echo "</div>";
 
 echo "</div>"; //column_other
 
-
 echo "</div>";//news_view
 
-
-function drawLatestNews($num, $selected_year = false, $selected_month = false)
+function drawLatestNews($num, $selected_year = FALSE, $selected_month = FALSE)
 {
-
 
     global $nb;
 
-    $qry=$nb->query();
+    $qry = $nb->query();
     $qry->select->order_by = " item_date DESC";
     $qry->select->limit = "3";
     $qry->exec();
@@ -112,7 +105,7 @@ function drawLatestNews($num, $selected_year = false, $selected_month = false)
 
         echo "<div class='cell details'>";
         echo "<span class='title'>" . $item_row["item_title"] . "</span>";
-        echo "<span class='date'>" . dateFormat($item_row["item_date"], false) . "</span>";
+        echo "<span class='date'>" . dateFormat($item_row["item_date"], FALSE) . "</span>";
         echo "</div>";
 
         echo "</a>";

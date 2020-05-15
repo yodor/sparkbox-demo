@@ -5,7 +5,6 @@ include_once("class/pages/DemoPage.php");
 include_once("forms/InputForm.php");
 include_once("input/DataInputFactory.php");
 
-
 $page = new DemoPage();
 
 $form = new InputForm();
@@ -22,7 +21,6 @@ $form_render = new FormRenderer($form);
 $form->setRenderer($form_render);
 $form->setProcessor(new FormProcessor());
 $form->getProcessor()->process($form);
-
 
 $page->startRender();
 

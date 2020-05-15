@@ -7,12 +7,11 @@ $page = new DemoPage();
 
 $dialog = new ConfirmMessageDialog();
 
-$field1 = DataInputFactory::CREATE(DataInputFactory::TEXT, "message1", "Message", false);
+$field1 = DataInputFactory::CREATE(DataInputFactory::TEXT, "message1", "Message", FALSE);
 $field1->setValue("Sample message text");
 
-$field2 = DataInputFactory::CREATE(DataInputFactory::TEXTAREA, "message2", "Confirmation Message", false);
+$field2 = DataInputFactory::CREATE(DataInputFactory::TEXTAREA, "message2", "Confirmation Message", FALSE);
 $field2->setValue("Sample confirmation message text");
-
 
 $page->startRender();
 
@@ -54,6 +53,5 @@ ColorButton::RenderButton("Show Confirm", "javascript:onShowConfirm(this)");
 <?php
 
 $page->finishRender();
-
 
 ?>

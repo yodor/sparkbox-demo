@@ -10,7 +10,7 @@ $form = new InputForm();
 
 //Array of TextField
 $textField = new ArrayDataInput("textField", "Text", 0);
-$textField->allow_dynamic_addition = true;
+$textField->allow_dynamic_addition = TRUE;
 
 $arf1 = new ArrayField(new TextField($textField));
 
@@ -22,7 +22,7 @@ $form->addInput($textField);
 
 //Array of TextArea
 $textArea = new ArrayDataInput("textArea", "Text Area", 1);
-$textArea->allow_dynamic_addition = true;
+$textArea->allow_dynamic_addition = TRUE;
 $textArea->setValidator(new EmptyValueValidator());
 new ArrayField(new TextArea($textArea));
 new InputProcessor($textArea);
@@ -31,12 +31,12 @@ $form->addInput($textArea);
 
 //Array of SelectField
 $selectField = new ArrayDataInput("selectField", "Select", 1);
-$selectField->allow_dynamic_addition = true;
+$selectField->allow_dynamic_addition = TRUE;
 
 $select_items = new ArrayDataIterator(array("Select Item 1", "Select Item 2", "Select Item 3"));
 $sr = new SelectField($selectField);
 $sr->setIterator($select_items);
-$sr->getItemRenderer()->setValueKey( ArrayDataIterator::KEY_ID);
+$sr->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_ID);
 $sr->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 new ArrayField($sr);
 
@@ -47,7 +47,7 @@ $form->addInput($selectField);
 
 //Array of CheckField
 $checkField = new ArrayDataInput("checkField", "Checkbox", 1);
-$checkField->allow_dynamic_addition = true;
+$checkField->allow_dynamic_addition = TRUE;
 
 $check_items = new ArrayDataIterator(array("CItem1", "CItem2", "CItem3"));
 $cr = new CheckField($checkField);
@@ -61,10 +61,9 @@ new InputProcessor($checkField);
 
 $form->addInput($checkField);
 
-
 //Array of RadioField
 $radioField = new ArrayDataInput("radioField", "Radio Button", 1);
-$radioField->allow_dynamic_addition = true;
+$radioField->allow_dynamic_addition = TRUE;
 $radioField->setValidator(new EmptyValueValidator());
 
 $radio_items = new ArrayDataIterator(array("RItem1", "RItem2", "RItem3"));
@@ -78,13 +77,11 @@ new InputProcessor($radioField);
 $form->addInput($radioField);
 //
 
-
-
 //Array of PhoneField
 $phoneField = new ArrayDataInput("phoneField", "Phone", 1);
-$phoneField->allow_dynamic_addition = true;
+$phoneField->allow_dynamic_addition = TRUE;
 $phoneField->add_field_text = "Add Phone";
-$phoneField->source_label_visible = true;
+$phoneField->source_label_visible = TRUE;
 $phoneField->append_offset = -1;
 $phoneField->setValidator(new PhoneValidator());
 //
@@ -96,7 +93,7 @@ $form->addInput($phoneField);
 
 //Array of DateField
 $dateField = new ArrayDataInput("dateField", "Date", 1);
-$dateField->allow_dynamic_addition = true;
+$dateField->allow_dynamic_addition = TRUE;
 $dateField->setValidator(new DateValidator());
 new ArrayField(new DateField($dateField));
 new DateInput($dateField);
@@ -106,7 +103,7 @@ $form->addInput($dateField);
 
 //Array of TimeField
 $timeInput = new ArrayDataInput("timeField", "Time", 1);
-$timeInput->allow_dynamic_addition = true;
+$timeInput->allow_dynamic_addition = TRUE;
 $timeInput->setValidator(new TimeValidator());
 new ArrayField(new TimeField($timeInput));
 new TimeInput($timeInput);
@@ -119,7 +116,6 @@ $form_render->setAttribute("name", "myform");
 $form_render->setAttribute("id", "myform");
 $form_render->setLayout(FormRenderer::FIELD_HBOX);
 
-
 $form->setProcessor(new FormProcessor());
 
 $form->getProcessor()->process($form);
@@ -129,6 +125,5 @@ $page->startRender();
 $form_render->render();
 
 $page->finishRender();
-
 
 ?>

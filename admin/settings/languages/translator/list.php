@@ -7,7 +7,6 @@ include_once("beans/SiteTextsBean.php");
 $page = new AdminPage();
 $page->checkAccess(ROLE_CONFIG_MENU);
 
-
 $bean = new SiteTextsBean();
 
 $menu = array();
@@ -19,10 +18,8 @@ while ($row = $qry->next()) {
     $menu[] = new MenuItem("Translate For " . $row["lang_code"], "phrases.php?langID=" . $row["langID"], "applications-development-translation.png");
 }
 
-
 $h_delete = new DeleteItemRequestHandler($bean);
 RequestController::addRequestHandler($h_delete);
-
 
 $view = new TableView($bean->query());
 $view->items_per_page = 30;
@@ -39,9 +36,7 @@ $view->getColumn("actions")->setCellRenderer($act);
 
 $view->setCaption("Available Site Phrases");
 
-
 $page->startRender($menu);
-
 
 $view->render();
 $page->finishRender();

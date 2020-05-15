@@ -5,9 +5,7 @@ include_once("class/pages/DemoPage.php");
 include_once("components/MenuBarComponent.php");
 include_once("beans/MenuItemsBean.php");
 
-
 $page = new DemoPage();
-
 
 $menu1 = new MainMenu();
 $menu1->setMenuBeanClass("MenuItemsBean");
@@ -19,19 +17,15 @@ $menu_bar1->setName("MenuItemsBean");
 
 $page->startRender();
 
-
 echo "<div class='MenuBarWrapper'>";
 $menu_bar1->render();
 echo "</div>";
-
 
 //
 // // echo "<div id=debug style='height:200px;overflow:scroll;'>Debug Area</div>";
 
 echo "<div class=clear></div>";
 
-
 $page->finishRender();
-
 
 ?>

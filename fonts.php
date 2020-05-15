@@ -3,12 +3,10 @@ include_once("session.php");
 
 include_once("class/pages/DemoPage.php");
 
-
 $page = new DemoPage();
 $page->addCSS(LOCAL . "css/fonts.css");
 
 $page->startRender();
-
 
 echo "<div class='container arial'>";
 drawSampleText();

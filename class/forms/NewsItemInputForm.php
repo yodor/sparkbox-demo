@@ -4,7 +4,6 @@ include_once("forms/InputForm.php");
 class NewsItemInputForm extends InputForm
 {
 
-
     public function __construct()
     {
 

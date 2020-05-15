@@ -16,9 +16,8 @@ class AdminPage extends AdminPageLib
 
         $this->addMeta("viewport", "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0");
 
-        $this->addCSS(LOCAL . "/css/admin.css", false);
+        $this->addCSS(LOCAL . "/css/admin.css", FALSE);
     }
-
 
 }
 

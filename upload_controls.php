@@ -6,7 +6,6 @@ $page = new DemoPage();
 
 $form = new InputForm();
 
-
 include_once("input/renderers/FileField.php");
 include_once("input/validators/FileUploadValidator.php");
 
@@ -31,7 +30,6 @@ $f17->setValidator(new ImageUploadValidator());
 new UploadDataInput($f17);
 $form->addInput($f17);
 
-
 $form_render = new FormRenderer($form);
 $form_render->setAttribute("name", "myform");
 $form_render->setAttribute("id", "myform");
@@ -45,6 +43,5 @@ $page->startRender();
 $form_render->render();
 
 $page->finishRender();
-
 
 ?>

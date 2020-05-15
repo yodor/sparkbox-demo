@@ -30,7 +30,6 @@ $gv->setCaption("Sample Photo Gallery Items");
 
 $page->startRender($menu);
 
-
 $gv->render();
 
 $page->finishRender();

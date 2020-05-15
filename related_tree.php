@@ -36,9 +36,6 @@ $treeView->setName("demo_tree");
 $treeView->open_all = FALSE;
 $treeView->getItemRenderer()->setLabelKey("category_name");
 
-
-
-
 //construct initial relation query to aggregate with the tree view
 $product_selector = new SQLSelect();
 $product_selector->fields = "  ";

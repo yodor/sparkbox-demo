@@ -5,7 +5,6 @@ include_once("class/pages/DemoPage.php");
 include_once("components/MenuBarComponent.php");
 include_once("class/beans/ProductCategoriesBean.php");
 
-
 function constructSubmenu($item, $level, $max_items, $max_level)
 {
     $level++;
@@ -21,7 +20,6 @@ function constructSubmenu($item, $level, $max_items, $max_level)
     }
 
 }
-
 
 $page = new DemoPage();
 
@@ -59,7 +57,6 @@ $page->startRender();
 $menu_bar->render();
 
 echo "<BR><BR><BR><BR><BR><BR><BR><BR>";
-
 
 $menu_bar1->render();
 

@@ -5,7 +5,6 @@ include_once("class/pages/DemoPage.php");
 
 include_once("class/beans/GalleryPhotosBean.php");
 
-
 $page = new DemoPage();
 $page->addCSS(SPARK_LOCAL . "/css/GalleryTape.css");
 $page->addJS(SPARK_LOCAL . "/js/GalleryTape.js");
@@ -17,7 +16,6 @@ $qry->select->fields = $bean->key();
 $qry->select->where = 1;
 
 $qry->exec();
-
 
 $page->startRender();
 

@@ -35,8 +35,6 @@ $gv->getActionsCollection()->addURLParameter($rc->getURLParameter());
 
 $page->startRender($menu);
 
-
-
 $gv->render();
 
 $page->finishRender();

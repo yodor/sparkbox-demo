@@ -9,7 +9,6 @@ include_once("forms/renderers/FormRenderer.php");
 include_once("forms/processors/FormProcessor.php");
 include_once("input/DataInputFactory.php");
 
-
 class DemoPage extends SparkPage
 {
 
@@ -33,7 +32,6 @@ class DemoPage extends SparkPage
         $item3 = new MenuItem("Upload", LOCAL . "upload_controls.php");
         $item->addMenuItem($item3);
 
-
         $arr[] = new MenuItem("Popups", LOCAL . "popups.php");
 
         $item = new MenuItem("Gallery", LOCAL . "gallery.php");
@@ -55,7 +53,6 @@ class DemoPage extends SparkPage
         $item1 = new MenuItem("Aggregate Tree", LOCAL . "related_tree.php");
         $item->addMenuItem($item1);
 
-
         $arr[] = new MenuItem("Fonts", LOCAL . "fonts.php");
         $arr[] = new MenuItem("CSS3", LOCAL . "css3.php");
 
@@ -63,23 +60,20 @@ class DemoPage extends SparkPage
 
         $menu->setMenuItems($arr);
 
-
         $this->menu_bar = new MenuBarComponent($menu);
 
         $this->menu_bar->setName("DemoPage");
-
 
         // 	$this->menu_bar->getItemRenderer()->disableSubmenuRenderer();
 
         $this->addMeta("viewport", "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0");
 
-        $this->addCSS(LOCAL. "css/demo.css");
+        $this->addCSS(LOCAL . "css/demo.css");
         $this->addCSS("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css");
 
         $this->addJS("//code.jquery.com/ui/1.11.4/jquery-ui.js");
 
     }
-
 
     public function startRender()
     {
@@ -99,7 +93,6 @@ class DemoPage extends SparkPage
         echo "<div class='main_content'>"; //inner contents
 
     }
-
 
     public function finishRender()
     {

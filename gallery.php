@@ -4,11 +4,9 @@ include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("class/beans/GalleryPhotosBean.php");
 
-
 $page = new DemoPage();
 $page->addCSS(SPARK_LOCAL . "/css/GalleryTape.css");
 $page->addJS(SPARK_LOCAL . "/js/GalleryTape.js");
-
 
 $bean = new GalleryPhotosBean();
 $qry = $bean->query();
