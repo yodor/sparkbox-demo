@@ -5,7 +5,6 @@ include_once("class/pages/DemoPage.php");
 
 $page = new DemoPage();
 $page->addCSS(LOCAL . "css/css3.css");
-$page->addCSS(LOCAL . "css/jquery.mCustomScrollbar.css");
 $page->addJS("//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js");
 $page->addJS(LOCAL . "js/jqplugins/jquery.mousewheel.min.js");
 $page->addJS(LOCAL . "js/jqplugins/jquery.mCustomScrollbar.js");
@@ -21,19 +20,6 @@ echo "<div class='scroll_custom'>";
 drawSampleText();
 echo "</div>";
 
-?>
-    <script type='text/javascript'>
-        $(document).ready(function () {
-            $(".scroll_custom").mCustomScrollbar({
-                mouseWheel: true,
-                scrollButtons: {
-                    enable: true
-                }
-            });
-        });
-
-    </script>
-<?php
 
 $page->finishRender();
 
@@ -43,12 +29,7 @@ function drawSampleText()
     echo "The Quick Brown Fox Jumps Over The Lazy Dog";
     echo "The Quick Brown Fox Jumps Over The Lazy Dog";
     echo "The Quick Brown Fox Jumps Over The Lazy Dog";
-    echo "The Quick Brown Fox Jumps Over The Lazy Dog";
-    echo "The Quick Brown Fox Jumps Over The Lazy Dog";
-    echo "The Quick Brown Fox Jumps Over The Lazy Dog";
-    echo "The Quick Brown Fox Jumps Over The Lazy Dog";
-    echo "The Quick Brown Fox Jumps Over The Lazy Dog";
-    echo "The Quick Brown Fox Jumps Over The Lazy Dog";
+
 
 }
 

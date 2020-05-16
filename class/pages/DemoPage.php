@@ -66,9 +66,8 @@ class DemoPage extends SparkPage
 
         // 	$this->menu_bar->getItemRenderer()->disableSubmenuRenderer();
 
-        $this->addMeta("viewport", "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0");
 
-        $this->addCSS(LOCAL . "css/demo.css");
+        $this->addCSS(LOCAL . "css/DemoPage.css");
         $this->addCSS("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css");
 
         $this->addJS("//code.jquery.com/ui/1.11.4/jquery-ui.js");

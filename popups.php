@@ -1,7 +1,7 @@
 <?php
 include_once("session.php");
 include_once("class/pages/DemoPage.php");
-include_once("panels/ConfirmMessageDialog.php");
+include_once("dialogs/ConfirmMessageDialog.php");
 
 $page = new DemoPage();
 
