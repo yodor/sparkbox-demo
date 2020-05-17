@@ -25,18 +25,18 @@ echo "<div class='button left'></div>";
 
 echo "<div class='viewport'>";
 echo "<div class='slots'>";
+$image_popup = new ImagePopup();
+$image_popup->setBean($bean);
+$image_popup->setAttribute("rel", "collection1");
+$image_popup->setPhotoSize(-1,160);
 
 while ($row = $qry->next()) {
 
     echo "<div class='slot'>";
     $itemID = $row[$bean->key()];
 
-    $img_href = StorageItem::Image($itemID, $bean, -1, 160);
-    $popup_href = StorageItem::Image($itemID, $bean);
-
-    echo "<a class='ImagePopup' href='$popup_href' rel='collection1'>";
-    echo "<img src='$img_href'>";
-    echo "</a>";
+    $image_popup->setID($itemID);
+    $image_popup->render();
 
     echo "</div>";
 

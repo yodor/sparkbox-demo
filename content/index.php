@@ -76,16 +76,18 @@ $qry = $dpp->queryField("dpID", $page_id, 1);
 $qry->select->fields = " ppID, caption ";
 $num_photos = $qry->exec();
 
+$image_popup = new ImagePopup();
+$image_popup->setBean($dpp);
+$image_popup->setAttribute("rel", "DynamicPagePhotosBean");
+
 if ($num_photos && $dprow = $qry->next()) {
     $photo_id = $dpprow["ppID"];
 
+    $image_popup->setID($photo_id);
+
     echo "<div class='photo_item' id='$photo_id' class='DynamicPagePhotosBean'>";
 
-    $img_href = StorageItem::Image($photo_id, $dpp);
-
-    echo "<a class='ImagePopup' href='$img_href' rel='DynamicPagePhotosBean'>";
-    echo "<img src='$img_href' >";
-    echo "</a>";
+    $image_popup->render();
 
     echo "<div class='caption'>";
     echo $dpprow["caption"];
