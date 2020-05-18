@@ -17,7 +17,6 @@ $config->loadForm($form);
 
 $rend = new FormRenderer($form);
 $rend->setClassName("config_form");
-$form->setRenderer($rend);
 
 $proc = new ConfigFormProcessor();
 
@@ -31,9 +30,11 @@ if ($proc->getStatus() == IFormProcessor::STATUS_OK) {
     exit;
 }
 
+$page->navigation()->clear();
+
 $page->startRender();
 
-$form->getRenderer()->render();
+$rend->render();
 
 $page->finishRender();
 ?>

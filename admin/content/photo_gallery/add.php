@@ -1,26 +1,18 @@
 <?php
 include_once("session.php");
-include_once("class/pages/AdminPage.php");
+include_once ("templates/admin/BeanEditorPage.php");
 include_once("class/beans/GalleryPhotosBean.php");
 
 include_once("forms/PhotoForm.php");
 
-$page = new AdminPage();
-$page->checkAccess(ROLE_CONTENT_MENU);
+$photos = new GalleryPhotosBean();
 
-$event_photos = new GalleryPhotosBean();
+$cmp = new BeanEditorPage();
 
-//prefer db_row
-$view = new BeanFormEditor($event_photos, new PhotoForm());
+$cmp->setBean($photos);
+$cmp->setForm(new PhotoForm());
 
-$form = $view->getForm()->getInput("photo")->getProcessor()->transact_mode = InputProcessor::TRANSACT_DBROW;
+$cmp->getForm()->getInput("photo")->getProcessor()->transact_mode = InputProcessor::TRANSACT_DBROW;
 
-$view->processInput();
-
-$page->startRender();
-
-$view->render();
-
-$page->finishRender();
 
 ?>

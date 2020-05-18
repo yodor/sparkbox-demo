@@ -13,7 +13,11 @@ $menu = array(
 
 );
 
-$page->startRender($menu);
+$page->setPageMenu($menu);
+
+$page->navigation()->clear();
+
+$page->startRender();
 
 $page->finishRender();
 
