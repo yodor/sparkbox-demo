@@ -5,14 +5,11 @@ include_once("class/beans/GalleryPhotosBean.php");
 
 include_once("forms/PhotoForm.php");
 
-$photos = new GalleryPhotosBean();
-
 $cmp = new BeanEditorPage();
 
-$cmp->setBean($photos);
+$cmp->setBean(new GalleryPhotosBean());
 $cmp->setForm(new PhotoForm());
 
-$cmp->getForm()->getInput("photo")->getProcessor()->transact_mode = InputProcessor::TRANSACT_DBROW;
-
+$cmp->render();
 
 ?>
