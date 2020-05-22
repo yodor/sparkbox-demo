@@ -19,8 +19,8 @@ foreach ($all_roles as $key => $val) {
 include_once("utils/MenuItem.php");
 $admin_menu = array();
 
-$admin_menu[] = new MenuItem("Content", ADMIN_LOCAL . "content/index.php", "class:icon_content");
+$admin_menu[] = new MenuItem("Content", ADMIN_LOCAL . "content/index.php", "icon_content");
 
-$admin_menu[] = new MenuItem("Settings", ADMIN_LOCAL . "settings/index.php", "class:icon_settings");
+$admin_menu[] = new MenuItem("Settings", ADMIN_LOCAL . "settings/index.php", "icon_settings");
 
 ?>

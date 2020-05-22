@@ -13,7 +13,7 @@ Session::Destroy();
 //    unset($_SESSION["upload_control_removed"]);
 //}
 
-header("Location: " . LOCAL . "admin/");
+header("Location: " . LOCAL . "/admin/");
 exit;
 
 ?>
