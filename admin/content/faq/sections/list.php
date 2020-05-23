@@ -10,10 +10,5 @@ $cmp = new BeanListPage();
 $cmp->setBean($bean);
 $cmp->setListFields(array("section_name"=>"Section"));
 
-$collection = $cmp->getPage()->getActions();
-$action = $collection->getByAction("Add");
-if ($action instanceof Action) {
-    $action->getURLBuilder()->buildFrom("add.php");
-}
 $cmp->render();
 ?>

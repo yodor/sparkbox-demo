@@ -6,12 +6,6 @@ $auth = new AdminAuthenticator();
 $auth->logout();
 Session::Destroy();
 
-//if (isset($_SESSION["upload_control"])) {
-//    unset($_SESSION["upload_control"]);
-//}
-//if (isset($_SESSION["upload_control_removed"])) {
-//    unset($_SESSION["upload_control_removed"]);
-//}
 
 header("Location: " . LOCAL . "/admin/");
 exit;

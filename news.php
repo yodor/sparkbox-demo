@@ -20,7 +20,7 @@ if (isset($_GET[$prkey])) {
 
 $qry = $nb->queryField($prkey, $itemID, 1);
 
-$pac = new PublicationArchiveComponent(new NewsItemsBean(), LOCAL . "news.php");
+$pac = new PublicationArchiveComponent(new NewsItemsBean(), LOCAL . "/news.php");
 
 $selected_year = $pac->getYear();
 $selected_month = $pac->getMonth();
@@ -96,7 +96,7 @@ function drawLatestNews($num, $selected_year = FALSE, $selected_month = FALSE)
 
     while ($item_row = $qry->next()) {
         $itemID = $item_row[$nb->key()];
-        echo "<a class='item' newsID='$itemID' href='" . LOCAL . "news.php?newsID=$itemID'>";
+        echo "<a class='item' newsID='$itemID' href='" . LOCAL . "/news.php?newsID=$itemID'>";
 
         echo "<div class='cell image'>";
         $img_href = StorageItem::Image($itemID, $nb, 48, 48);

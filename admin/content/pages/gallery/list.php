@@ -8,13 +8,14 @@ include_once("beans/DynamicPagesBean.php");
 
 $rc = new BeanKeyCondition(new DynamicPagesBean(), "../list.php", array("item_title"));
 
+
 $bean = new DynamicPagePhotosBean();
-$bean->select()->where = $rc->getURLParameter()->text(TRUE);
 
 $cmp = new GalleryViewPage();
+$cmp->setRequestCondition($rc);
+
 $cmp->setBean($bean);
 $cmp->getPage()->setName(tr("Photo Gallery").": " . $rc->getData("item_title"));
-$cmp->getPage()->setAccessibleTitle($cmp->getPage()->getName());
 
 $cmp->setBean($bean);
 
