@@ -32,7 +32,7 @@ class DemoPage extends SparkPage
         $item3 = new MenuItem("Upload", LOCAL . "/upload_controls.php");
         $item->addMenuItem($item3);
 
-        $arr[] = new MenuItem("Popups", LOCAL . "/popups.php");
+        $arr[] = new MenuItem("Popups", LOCAL . "/dialogs.php");
 
         $item = new MenuItem("Gallery", LOCAL . "/gallery.php");
         $arr[] = $item;
