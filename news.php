@@ -3,11 +3,11 @@ include_once("session.php");
 
 include_once("class/pages/DemoPage.php");
 
-include_once("class/beans/NewsItemsBean.php");
+include_once("beans/NewsItemsBean.php");
 include_once("components/PublicationArchiveComponent.php");
 
 $page = new DemoPage();
-$page->addCSS(LOCAL . "css/news.css");
+$page->addCSS(LOCAL . "/css/news.css");
 
 $nb = new NewsItemsBean();
 $prkey = $nb->key();
@@ -19,6 +19,7 @@ if (isset($_GET[$prkey])) {
 }
 
 $qry = $nb->queryField($prkey, $itemID, 1);
+$qry->select->fields()->set("item_title", "item_date", "content");
 
 $pac = new PublicationArchiveComponent(new NewsItemsBean(), LOCAL . "/news.php");
 
@@ -26,7 +27,8 @@ $selected_year = $pac->getYear();
 $selected_month = $pac->getMonth();
 
 if ($pac->haveSelection()) {
-    $qry->select->where = " YEAR(item_date)='$selected_year' AND MONTHNAME(item_date)='$selected_month' ";
+    $qry->select->where()->add( "YEAR(item_date)", "'$selected_year'");
+    $qry->select->where()->add("MONTHNAME(item_date)", "'$selected_month'");
     $qry->select->order_by = " item_date DESC ";
     $qry->select->limit = "";
 }

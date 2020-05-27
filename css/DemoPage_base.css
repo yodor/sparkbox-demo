@@ -84,3 +84,11 @@ body {
 .DemoPage.dialogs .main_content .InputLabel {
     display:block;
 }
+
+.DemoPage.mce_browser FORM {
+    width:100%;
+}
+.DemoPage.mce_browser .MCETextArea {
+
+    min-height:480px;
+}

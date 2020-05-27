@@ -11,7 +11,8 @@ $page->addJS(SPARK_LOCAL . "/js/GalleryTape.js");
 $bean = new GalleryPhotosBean();
 $qry = $bean->query();
 $qry->select->order_by = " position ASC ";
-$qry->select->fields = $bean->key();
+$qry->select->fields()->set($bean->key());
+
 
 $qry->exec();
 

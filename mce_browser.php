@@ -16,13 +16,19 @@ $handler->setOwnerID(-1);
 
 $form_render = new FormRenderer($form);
 $form_render->setLayout(FormRenderer::FIELD_VBOX);
+$form_render->getSubmitButton()->setContents("Preview");
 
-$form->setProcessor(new FormProcessor());
-$form->getProcessor()->process($form);
+$proc = new FormProcessor();
+
+$proc->process($form);
 
 $page->startRender();
 
 $form_render->render();
+
+echo "<div class='Caption'>Result</div>";
+echo "<HR>";
+echo $form->valueUnescape("text");
 
 $page->finishRender();
 ?>

@@ -29,15 +29,13 @@ class DemoPage extends SparkPage
         $item->addMenuItem($item1);
         $item2 = new MenuItem("AJAX Upload", LOCAL . "/ajax_upload.php");
         $item->addMenuItem($item2);
-        $item3 = new MenuItem("Upload", LOCAL . "/upload_controls.php");
+        $item3 = new MenuItem("Plain Upload", LOCAL . "/upload_controls.php");
         $item->addMenuItem($item3);
 
-        $arr[] = new MenuItem("Popups", LOCAL . "/dialogs.php");
+        $arr[] = new MenuItem("Dialogs", LOCAL . "/dialogs.php");
 
-        $item = new MenuItem("Gallery", LOCAL . "/gallery.php");
+        $item = new MenuItem("Image Gallery", LOCAL . "/gallery.php");
         $arr[] = $item;
-        $item1 = new MenuItem("Styled Gallery Popup", LOCAL . "/gallery_custom.php");
-        $item->addMenuItem($item1);
 
         $arr[] = new MenuItem("MCE Image Browser", LOCAL . "/mce_browser.php");
 
@@ -52,9 +50,6 @@ class DemoPage extends SparkPage
 
         $item1 = new MenuItem("Aggregate Tree", LOCAL . "/related_tree.php");
         $item->addMenuItem($item1);
-
-        $arr[] = new MenuItem("Fonts", LOCAL . "/fonts.php");
-        $arr[] = new MenuItem("CSS3", LOCAL . "/css3.php");
 
         $arr[] = new MenuItem("Publications", LOCAL . "/news.php");
 
