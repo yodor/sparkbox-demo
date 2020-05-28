@@ -8,7 +8,7 @@ $bean = new GalleryPhotosBean();
 
 $cmp = new GalleryViewPage();
 $cmp->setBean($bean);
-
+$cmp->getPage()->navigation()->clear();
 $cmp->render();
 
 ?>
