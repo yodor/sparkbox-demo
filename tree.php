@@ -4,38 +4,34 @@ include_once("class/pages/DemoPage.php");
 
 include_once("components/NestedSetTreeView.php");
 include_once("components/renderers/items/TextTreeItem.php");
-include_once("class/beans/ProductCategoriesBean.php");
-include_once("utils/NestedSetFilterProcessor.php");
+
+include_once ("beans/MenuItemsBean.php");
 
 $page = new DemoPage();
 
-$bean = new ProductCategoriesBean();
+$bean = new MenuItemsBean();
 
 $ir = new TextTreeItem();
-// $ir->addAction(new Action("Up", "?cmd=reposition&direction=left", array(new ActionParameter("item_id", $bean->key()))));
-// $ir->addAction(new Action("Down", "?cmd=reposition&direction=right", array(new ActionParameter("item_id", $bean->key()))));
 
-$ir->addAction(new Action("Edit", "tree.php", array(//       new ActionParameter($bean->key(), $bean->key()),
-                                                    new DataParameter("editID", $bean->key()),)));
+$view = new NestedSetTreeView();
+$view->setIterator(new SQLQuery($bean->selectTree(array("menu_title")), $bean->key(), $bean->getTableName()));
+$view->setItemRenderer($ir);
 
-$ir->setLabelKey("category_name");
+$ir->setLabelKey("menu_title");
+$ir->setValueKey("menuID");
 
-$tv = new NestedSetTreeView();
+$ir->getTextAction()->getURLBuilder()->add(new DataParameter("menuID"));
 
-$tv->setItemRenderer($ir);
-
-$tv->setName("demo_tree");
-$tv->open_all = FALSE;
-$tv->setIterator(new SQLQuery($bean->selectTree(array("category_name")), $bean->key(), $bean->getTableName()));
-
-$proc = new NestedSetFilterProcessor();
-$proc->process($tv);
-
-// $tv->processFilters();
+//$tv->setName("demo_tree");
+//$tv->open_all = FALSE;
+//$tv->setIterator();
+if (isset($_GET["menuID"])) {
+    $view->setSelectedID((int)$_GET["menuID"]);
+}
 
 $page->startRender();
 
-$tv->render();
+$view->render();
 
 $page->finishRender();
 

@@ -42,14 +42,8 @@ class DemoPage extends SparkPage
         $menus = new MenuItem("Menus", LOCAL . "/menu.php");
         $arr[] = $menus;
 
-        $db_menu = new MenuItem("DB Menu", LOCAL . "/db_menu.php");
-        $menus->addMenuItem($db_menu);
-
         $item = new MenuItem("Tree View", LOCAL . "/tree.php");
         $arr[] = $item;
-
-        $item1 = new MenuItem("Aggregate Tree", LOCAL . "/related_tree.php");
-        $item->addMenuItem($item1);
 
         $arr[] = new MenuItem("Publications", LOCAL . "/news.php");
 

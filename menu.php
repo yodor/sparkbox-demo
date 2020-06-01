@@ -1,9 +1,8 @@
 <?php
 include_once("session.php");
 include_once("class/pages/DemoPage.php");
-
+include_once("beans/MenuItemsBean.php");
 include_once("components/MenuBarComponent.php");
-include_once("class/beans/ProductCategoriesBean.php");
 
 function constructSubmenu($item, $level, $max_items, $max_level)
 {
@@ -44,13 +43,16 @@ $menu_bar->setName("ConstructedMenu");
 
 $menu_bar->getMainMenu()->findMenuIndex();
 
+
 $menu1 = new MainMenu();
-$menu1->setMenuBeanClass("ProductCategoriesBean");
+$menu1->setMenuBeanClass("MenuItemsBean");
 // $parentID=0, MenuItem $parent_item = NULL, $key="menuID", $title="menu_title"
-$menu1->constructMenuItems(0, NULL, "catID", "category_name");
+$menu1->constructMenuItems(0, NULL, "menuID", "menu_title");
 
 $menu_bar1 = new MenuBarComponent($menu1);
-$menu_bar1->setName("ProductCategoriesBean");
+$menu_bar1->setName("MenuItemsBean");
+
+
 
 $page->startRender();
 

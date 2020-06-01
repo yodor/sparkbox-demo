@@ -4,116 +4,55 @@ include_once("session.php");
 include_once("class/pages/DemoPage.php");
 
 include_once("beans/NewsItemsBean.php");
-include_once("components/PublicationArchiveComponent.php");
+include_once("components/PublicationsComponent.php");
 
 $page = new DemoPage();
 $page->addCSS(LOCAL . "/css/news.css");
 
-$nb = new NewsItemsBean();
-$prkey = $nb->key();
+$bean = new NewsItemsBean();
 
-$itemID = -1;
+$pac = new PublicationsComponent($bean, LOCAL . "/news.php");
 
-if (isset($_GET[$prkey])) {
-    $itemID = (int)$_GET[$prkey];
-}
+$pac->processInput();
 
-$qry = $nb->queryField($prkey, $itemID, 1);
-$qry->select->fields()->set("item_title", "item_date", "content");
-
-$pac = new PublicationArchiveComponent(new NewsItemsBean(), LOCAL . "/news.php");
-
-$selected_year = $pac->getYear();
-$selected_month = $pac->getMonth();
-
-if ($pac->haveSelection()) {
-    $qry->select->where()->add( "YEAR(item_date)", "'$selected_year'");
-    $qry->select->where()->add("MONTHNAME(item_date)", "'$selected_month'");
-    $qry->select->order_by = " item_date DESC ";
-    $qry->select->limit = "";
-}
-
-$qry->exec();
 
 $page->startRender();
 
 echo "<div class='news_view'>";
 
 echo "<div class='column main'>";
-while ($item_row = $qry->next()) {
-    $itemID = $item_row[$nb->key()];
-    trbean($itemID, "item_title", $item_row, $nb->getTableName());
-    trbean($itemID, "content", $item_row, $nb->getTableName());
 
-    echo "<div class='item_view' itemID='$itemID'>";
-    echo "<div class='title'>";
-    echo $item_row["item_title"];
+$arr = $pac->getSelection();
+
+$qry = $pac->getBean()->query(...$pac->getSelectionColumns());
+$qry->select->where()->add($bean->key(), "(".implode(",",$arr).")", " IN ");
+$qry->exec();
+
+while ($item = $qry->next()) {
+    echo "<div class='item'>";
+    echo "<div class='title'>".$item["item_title"]."</div>";
+    echo "<div class='date'>".date($pac->getItemRenderer()->getDateFormat(), strtotime($item["item_date"]))."</div>";
+
+    echo "<div class='image'>";
+    $img_href = StorageItem::Image($item[$qry->key()], $bean);
+    echo "<img width=100% src='$img_href'>";
     echo "</div>";
 
-    echo "<div class='date'>";
-    echo dateFormat($item_row["item_date"], FALSE);
-    echo "</div>";
-
-    echo "<div class='content'>";
-    $img_href = StorageItem::Image($itemID, "NewsItemsBean", 640, -1);
-    echo "<img src='$img_href'>";
-    echo $item_row["content"];
-    echo "</div>";
-
-    echo "</div>";
-
-    echo "<hr>";
+    echo "<div class='contents'>".$item["content"]."</div>";
+    echo "</div>"; //item
 }
+
+
 echo "</div>"; //column_main
 
 echo "<div class='column other'>";
-echo "<div class='latest'>";
-echo "<div class='caption'>";
-echo tr("Latest News");
-echo "</div>";
-drawLatestNews(3);
 
-echo "</div>";
-
-echo "<div class='archive'>";
-echo "<div class='caption'>";
-echo tr("News Archive");
-echo "</div>";
 $pac->render();
-echo "</div>";
 
 echo "</div>"; //column_other
 
 echo "</div>";//news_view
 
-function drawLatestNews($num, $selected_year = FALSE, $selected_month = FALSE)
-{
-
-    global $nb;
-
-    $qry = $nb->query();
-    $qry->select->order_by = " item_date DESC";
-    $qry->select->limit = "3";
-    $qry->exec();
-
-    while ($item_row = $qry->next()) {
-        $itemID = $item_row[$nb->key()];
-        echo "<a class='item' newsID='$itemID' href='" . LOCAL . "/news.php?newsID=$itemID'>";
-
-        echo "<div class='cell image'>";
-        $img_href = StorageItem::Image($itemID, $nb, 48, 48);
-        echo "<div class='panel'><img src='$img_href'></div>";
-        echo "</div>";
-
-        echo "<div class='cell details'>";
-        echo "<span class='title'>" . $item_row["item_title"] . "</span>";
-        echo "<span class='date'>" . dateFormat($item_row["item_date"], FALSE) . "</span>";
-        echo "</div>";
-
-        echo "</a>";
-    }
-
-}
 
 $page->finishRender();
 ?>
