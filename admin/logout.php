@@ -7,7 +7,7 @@ $auth->logout();
 Session::Destroy();
 
 
-header("Location: " . LOCAL . "/admin/");
+header("Location: " . ADMIN_LOCAL . "/");
 exit;
 
 ?>
