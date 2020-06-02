@@ -70,7 +70,7 @@ class DemoPage extends SparkPage
         echo "\n<!-- startRender DemoPage -->\n";
 
         $main_menu = $this->menu_bar->getMainMenu();
-        $main_menu->selectActiveMenus();
+        $main_menu->selectActive();
 
         $this->preferred_title = constructSiteTitle($main_menu->getSelectedPath());
 
