@@ -23,25 +23,25 @@ echo "<div class='news_view'>";
 echo "<div class='column main'>";
 
 $arr = $pac->getSelection();
+if (count($arr)>0) {
+    $qry = $pac->getBean()->query(...$pac->getSelectionColumns());
+    $qry->select->where()->add($bean->key(), "(" . implode(",", $arr) . ")", " IN ");
+    $qry->exec();
 
-$qry = $pac->getBean()->query(...$pac->getSelectionColumns());
-$qry->select->where()->add($bean->key(), "(".implode(",",$arr).")", " IN ");
-$qry->exec();
+    while ($item = $qry->next()) {
+        echo "<div class='item'>";
+        echo "<div class='title'>" . $item["item_title"] . "</div>";
+        echo "<div class='date'>" . date($pac->getItemRenderer()->getDateFormat(), strtotime($item["item_date"])) . "</div>";
 
-while ($item = $qry->next()) {
-    echo "<div class='item'>";
-    echo "<div class='title'>".$item["item_title"]."</div>";
-    echo "<div class='date'>".date($pac->getItemRenderer()->getDateFormat(), strtotime($item["item_date"]))."</div>";
+        echo "<div class='image'>";
+        $img_href = StorageItem::Image($item[$qry->key()], $bean);
+        echo "<img width=100% src='$img_href'>";
+        echo "</div>";
 
-    echo "<div class='image'>";
-    $img_href = StorageItem::Image($item[$qry->key()], $bean);
-    echo "<img width=100% src='$img_href'>";
-    echo "</div>";
-
-    echo "<div class='contents'>".$item["content"]."</div>";
-    echo "</div>"; //item
+        echo "<div class='contents'>" . $item["content"] . "</div>";
+        echo "</div>"; //item
+    }
 }
-
 
 echo "</div>"; //column_main
 
