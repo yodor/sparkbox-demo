@@ -3,8 +3,11 @@ include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("dialogs/ConfirmMessageDialog.php");
 include_once("dialogs/InputMessageDialog.php");
+include_once("class/responders/json/SampleFormResponder.php");
 
 $page = new DemoPage();
+
+$responder = new SampleFormResponder();
 
 $confirm_dialog = new ConfirmMessageDialog();
 $input_dialog = new InputMessageDialog();
@@ -36,6 +39,8 @@ $cmp->setDataInput($field3);
 $cmp->render();
 
 ColorButton::RenderButton("Show Input", "javascript:showUserInputDialog()");
+
+ColorButton::RenderButton("Show JSONFormDialog", "javascript:showJSONFormDialog()");
 
 $page->finishRender();
 
@@ -89,14 +94,19 @@ $page->finishRender();
     }
 
     function showMessageDialog() {
-        var message_text = $(".TextField input[type='text']").val();
+        let message_text = $(".TextField input[type='text']").val();
         showAlert(message_text);
     }
 
     function showConfirmDialog() {
-        var message_text = $(".TextArea textarea").val();
+        let message_text = $(".TextArea textarea").val();
         confirm_dialog.setText(message_text);
         confirm_dialog.show();
+    }
+    function showJSONFormDialog() {
+        let dialog = new JSONFormDialog();
+        dialog.setResponder("SampleFormResponder");
+        dialog.show();
     }
 
 </script>
