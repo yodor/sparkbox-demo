@@ -57,9 +57,7 @@ class DemoPage extends SparkPage
 
 
         $this->addCSS(LOCAL . "/css/DemoPage.css");
-        $this->addCSS("//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css");
 
-        $this->addJS("//code.jquery.com/ui/1.11.4/jquery-ui.js");
 
     }
 
