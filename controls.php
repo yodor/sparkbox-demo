@@ -4,6 +4,7 @@ include_once("class/pages/DemoPage.php");
 include_once("forms/InputForm.php");
 include_once("iterators/ArrayDataIterator.php");
 include_once("input/DataInputFactory.php");
+include_once ("beans/MenuItemsBean.php");
 
 $page = new DemoPage();
 
@@ -123,11 +124,24 @@ $f15 = new DataInput("field15", "Hidden", 0);
 $hf = new HiddenField($f15);
 $form->addInput($f15);
 
-$f16 = DataInputFactory::Create(DataInputFactory::CAPTCHA, "captcha_field", "Captcha Code", 1);
-$form->addInput($f16);
+//$f16 = DataInputFactory::Create(DataInputFactory::CAPTCHA, "captcha_field", "Captcha Code", 1);
+//$form->addInput($f16);
 
 $f17 = DataInputFactory::Create(DataInputFactory::CAPTCHA_TEXT, "captcha_text", "Spam Protection", 1);
 $form->addInput($f17);
+
+
+$f18 = DataInputFactory::Create(DataInputFactory::CHECKBOX_TREEVIEW, "checkbox_treeview", "Checkbox Treeview", 1);
+
+$bean = new MenuItemsBean();
+$f18->getRenderer()->setIterator(new SQLQuery($bean->selectTree(array("menu_title")), $bean->key(), $bean->getTableName()));
+
+$ir = $f18->getRenderer()->getItemRenderer();
+$ir->setLabelKey("menu_title");
+$ir->setValueKey("menuID");
+
+
+$form->addInput($f18);
 
 $frender = new FormRenderer($form);
 

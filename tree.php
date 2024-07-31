@@ -19,6 +19,9 @@ $view->setItemRenderer($ir);
 
 $ir->setLabelKey("menu_title");
 $ir->setValueKey("menuID");
+$ir->enableCheckbox("selectedItems");
+
+$view->setCheckedNodes(1,2);
 
 $ir->getTextAction()->getURLBuilder()->add(new DataParameter("menuID"));
 
