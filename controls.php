@@ -124,9 +124,6 @@ $f15 = new DataInput("field15", "Hidden", 0);
 $hf = new HiddenField($f15);
 $form->addInput($f15);
 
-//$f16 = DataInputFactory::Create(DataInputFactory::CAPTCHA, "captcha_field", "Captcha Code", 1);
-//$form->addInput($f16);
-
 $f17 = DataInputFactory::Create(DataInputFactory::CAPTCHA_TEXT, "captcha_text", "Spam Protection", 1);
 $form->addInput($f17);
 
