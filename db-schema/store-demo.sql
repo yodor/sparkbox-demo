@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photos`
     `photo`       longblob                                                NOT NULL,
     `width`       int(11)                                                 NOT NULL,
     `height`      int(11)                                                 NOT NULL,
-    `date_upload` timestamp                                               NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `date_upload`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `type`        int(11)                                                          DEFAULT NULL,
     `caption`     text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
     `position`    int(11)                                                 NOT NULL,
