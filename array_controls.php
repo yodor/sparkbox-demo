@@ -76,9 +76,9 @@ $form->addInput($radioField);
 
 //Array of PhoneField
 $phoneField = new ArrayDataInput("phoneField", "Phone", 1);
-$phoneField->add_field_text = "Add Phone";
-$phoneField->source_label_visible = TRUE;
-$phoneField->append_offset = -1;
+//$phoneField->add_field_text = "Add Phone";
+//$phoneField->source_label_visible = TRUE;
+//$phoneField->append_offset = -1;
 $phoneField->setValidator(new PhoneValidator());
 //
 new ArrayField(new PhoneField($phoneField));
