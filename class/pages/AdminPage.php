@@ -9,7 +9,7 @@ class AdminPage extends SparkAdminPage
     {
         parent::__construct();
 
-        $this->addCSS(LOCAL . "/css/AdminPage.css", FALSE);
+        $this->head()->addCSS(LOCAL . "/css/AdminPage.css", FALSE);
     }
 
 }

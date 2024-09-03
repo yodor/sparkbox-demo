@@ -7,7 +7,7 @@ include_once("beans/NewsItemsBean.php");
 include_once("components/PublicationsComponent.php");
 
 $page = new DemoPage();
-$page->addCSS(LOCAL . "/css/news.css");
+$page->head()->addCSS(LOCAL . "/css/news.css");
 
 $bean = new NewsItemsBean();
 
