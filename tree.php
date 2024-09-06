@@ -23,7 +23,7 @@ $ir->enableCheckbox("selectedItems");
 
 $view->setCheckedNodes(1,2);
 
-$ir->getTextAction()->getURLBuilder()->add(new DataParameter("menuID"));
+$ir->getTextAction()->getURL()->add(new DataParameter("menuID"));
 
 //$tv->setName("demo_tree");
 //$tv->open_all = FALSE;
