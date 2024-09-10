@@ -1,7 +1,7 @@
 <?php
 include_once("pages/SparkPage.php");
 
-include_once("utils/MainMenu.php");
+include_once("utils/menu/MainMenu.php");
 include_once("components/MenuBarComponent.php");
 
 include_once("forms/InputForm.php");
