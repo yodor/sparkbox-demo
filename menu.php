@@ -2,6 +2,7 @@
 include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("beans/MenuItemsBean.php");
+include_once("utils/menu/BeanMenuFactory.php");
 include_once("components/MenuBarComponent.php");
 
 function constructSubmenu($item, $level, $max_items, $max_level)
@@ -13,7 +14,7 @@ function constructSubmenu($item, $level, $max_items, $max_level)
 
     for ($b = 0; $b < $max_items; $b++) {
         $sitem = new MenuItem("$b.MenuItem (Level: $level)", "menu.php?branch=$b&level=$level");
-        $item->addMenuItem($sitem);
+        $item->append($sitem);
         constructSubmenu($sitem, $level, $max_items, $max_level);
 
     }
@@ -22,34 +23,29 @@ function constructSubmenu($item, $level, $max_items, $max_level)
 
 $page = new DemoPage();
 
-$menu = new MainMenu();
+$menu = new MenuItemList();
 
 $menu->setName("ConstructedMenu");
 
-$arr = array();
 for ($a = 0; $a < 1; $a++) {
     $item = new MenuItem("MenuItem " . ($a + 1), "menu.php");
 
     if ($a < 2) {
         constructSubmenu($item, 0, 6, 3);
     }
-    $arr[] = $item;
+    $menu->append($item);
 }
 
-$menu->setMenuItems($arr);
+
 
 $menu_bar = new MenuBarComponent($menu);
 $menu_bar->setName("ConstructedMenu");
 
 
-$menu1 = new MainMenu();
-$menu1->setBean(new MenuItemsBean());
-$menu1->setLabelKey("menu_title");
-$menu1->setValueKey("menuID");
-$menu1->setTargetURL("menu.php");
-$menu1->construct();
+$menuFactory = new BeanMenuFactory(new MenuItemsBean(), "menu_title", "menuID");
+$menuFactory->setTargetURL("menu.php");
 
-$menu_bar1 = new MenuBarComponent($menu1);
+$menu_bar1 = new MenuBarComponent($menuFactory->menu());
 $menu_bar1->setName("MenuItemsBean");
 
 

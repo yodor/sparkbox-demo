@@ -1,7 +1,7 @@
 <?php
 include_once("pages/SparkPage.php");
 
-include_once("utils/menu/MainMenu.php");
+include_once("utils/menu/MenuItemList.php");
 include_once("components/MenuBarComponent.php");
 
 include_once("forms/InputForm.php");
@@ -19,35 +19,39 @@ class DemoPage extends SparkPage
 
         parent::__construct();
 
-        $menu = new MainMenu();
+        $menu = new MenuItemList();
 
-        $arr = array();
+
         $item = new MenuItem("Controls", LOCAL . "/controls.php");
-        $arr[] = $item;
 
         $item1 = new MenuItem("Array Controls", LOCAL . "/array_controls.php");
-        $item->addMenuItem($item1);
+        $item->append($item1);
         $item2 = new MenuItem("AJAX Upload", LOCAL . "/ajax_upload.php");
-        $item->addMenuItem($item2);
+        $item->append($item2);
         $item3 = new MenuItem("Plain Upload", LOCAL . "/upload_controls.php");
-        $item->addMenuItem($item3);
+        $item->append($item3);
 
-        $arr[] = new MenuItem("Dialogs", LOCAL . "/dialogs.php");
+        $menu->append($item);
+
+
+        $item = new MenuItem("Dialogs", LOCAL . "/dialogs.php");
+        $menu->append($item);
 
         $item = new MenuItem("Image Gallery", LOCAL . "/gallery.php");
-        $arr[] = $item;
+        $menu->append($item);
 
-        $arr[] = new MenuItem("MCE Image Browser", LOCAL . "/mce_browser.php");
+        $item = new MenuItem("MCE Image Browser", LOCAL . "/mce_browser.php");
+        $menu->append($item);
 
-        $menus = new MenuItem("Menus", LOCAL . "/menu.php");
-        $arr[] = $menus;
+        $item = new MenuItem("Menus", LOCAL . "/menu.php");
+        $menu->append($item);
 
         $item = new MenuItem("Tree View", LOCAL . "/tree.php");
-        $arr[] = $item;
+        $menu->append($item);
 
-        $arr[] = new MenuItem("Publications", LOCAL . "/news.php");
+        $item = new MenuItem("Publications", LOCAL . "/news.php");
+        $menu->append($item);
 
-        $menu->setMenuItems($arr);
 
         $this->menu_bar = new MenuBarComponent($menu);
 
@@ -67,7 +71,7 @@ class DemoPage extends SparkPage
 
         echo "\n<!-- startRender DemoPage -->\n";
 
-        $main_menu = $this->menu_bar->getMainMenu();
+        $main_menu = $this->menu_bar->getMenu();
         $main_menu->selectActive();
 
         $this->preferred_title = constructSiteTitle($main_menu->getSelectedPath());
