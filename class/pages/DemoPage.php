@@ -52,6 +52,8 @@ class DemoPage extends SparkPage
         $item = new MenuItem("Publications", LOCAL . "/news.php");
         $menu->append($item);
 
+        $item = new MenuItem("Test", LOCAL . "/test.php");
+        $menu->append($item);
 
         $this->menu_bar = new MenuBarComponent($menu);
 

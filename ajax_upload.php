@@ -10,6 +10,7 @@ $page = new DemoPage();
 $form = new InputForm();
 
 $input = DataInputFactory::Create(DataInputFactory::SESSION_IMAGE, "photo", "Photo", 1);
+$input->getProcessor()->setTransactBeanItemLimit(4);
 $form->addInput($input);
 
 $input = DataInputFactory::Create(DataInputFactory::SESSION_FILE, "document", "Document", 1);
