@@ -43,7 +43,7 @@ $menu_bar->setName("ConstructedMenu");
 
 
 $menuFactory = new BeanMenuFactory(new MenuItemsBean(), "menu_title", "menuID");
-$menuFactory->setTargetURL("menu.php");
+
 
 $menu_bar1 = new MenuBarComponent($menuFactory->menu());
 $menu_bar1->setName("MenuItemsBean");

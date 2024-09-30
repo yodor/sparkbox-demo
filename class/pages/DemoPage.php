@@ -59,9 +59,6 @@ class DemoPage extends SparkPage
 
         $this->menu_bar->setName("DemoPage");
 
-        // 	$this->menu_bar->getItemRenderer()->disableSubmenuRenderer();
-
-
         $this->head()->addCSS(LOCAL . "/css/DemoPage.css");
 
 
