@@ -29,19 +29,20 @@ $form->addInput($textArea);
 //
 
 //Array of SelectField
-$selectField = new ArrayDataInput("selectField", "Select", 1);
+$selectArrayData = new ArrayDataInput("selectField", "Select", 1);
 
 
 $select_items = new ArrayDataIterator(array("Select Item 1", "Select Item 2", "Select Item 3"));
-$sr = new SelectField($selectField);
+$sr = new SelectField($selectArrayData);
 $sr->setIterator($select_items);
 $sr->getItemRenderer()->setValueKey(ArrayDataIterator::KEY_ID);
 $sr->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 new ArrayField($sr);
 
-$selectField->setValidator(new EmptyValueValidator());
-new InputProcessor($selectField);
-$form->addInput($selectField);
+$selectArrayData->setValidator(new EmptyValueValidator());
+new InputProcessor($selectArrayData);
+
+$form->addInput($selectArrayData);
 //
 
 //Array of CheckField

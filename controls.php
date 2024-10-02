@@ -63,7 +63,7 @@ $form->addInput($f6);
 
 $aw = new ArrayDataIterator(array("CheckboxItem1", "CheckboxItem2", "CheckboxItem3"));
 
-$f11 = new DataInput("field11", "Checkbox DataSource", 1);
+$f11 = new DataInput("field11", "Checkbox DataSource", 0);
 $f11->setValidator(new EmptyValueValidator());
 new InputProcessor($f11);
 
@@ -76,10 +76,9 @@ $form->addInput($f11);
 
 $aw = new ArrayDataIterator(array("CheckboxItem1", "CheckboxItem2", "CheckboxItem3"));
 
-$f11 = new DataInput("field11_req", "Checkbox DataSource<BR><small>Require array value</small>", 1);
+$f11 = new DataInput("field11_req", "Checkbox DataSource", 1);
 
 $validator = new EmptyValueValidator();
-$validator->require_array_value = TRUE;
 $f11->setValidator($validator);
 
 $cf3 = new CheckField($f11);
