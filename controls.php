@@ -139,12 +139,27 @@ $ir->setValueKey("menuID");
 
 $form->addInput($f18);
 
+
+$f19 = DataInputFactory::Create(DataInputFactory::SLIDER, "sliderName", "Slider Example", 1);
+$field = $f19->getRenderer();
+if ($field instanceof SliderField) {
+    $field->setMinimum(10);
+    $field->setMaximum(100);
+    $field->setStep(5);
+}
+$form->addInput($f19);
+
 $frender = new FormRenderer($form);
 
 $frender->setLayout(FormRenderer::FIELD_HBOX);
 
 $proc = new FormProcessor();
 
+if (isset($_GET["type"])) {
+    if (strcmp($_GET["type"], "vbox")==0) {
+        $frender->setLayout(FormRenderer::FIELD_VBOX);
+    }
+}
 $proc->process($form);
 
 $page->startRender();

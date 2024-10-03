@@ -27,8 +27,10 @@ $page->startRender();
 $form_render->render();
 
 echo "<div class='Caption'>Result</div>";
+//echo "<HR>";
+//echo attributeValue($form->getInput("text")->getValue());
 echo "<HR>";
-echo $form->valueUnescape("text");
+echo mysql_real_unescape_string($input->getValue());
 
 $page->finishRender();
 ?>
