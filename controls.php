@@ -6,6 +6,14 @@ include_once("iterators/ArrayDataIterator.php");
 include_once("input/DataInputFactory.php");
 include_once ("beans/MenuItemsBean.php");
 
+function createArray($value, $count) : array
+{
+    $result = array();
+    for($i = 0; $i < $count; $i++) {
+        $result[] = $value.$i;
+    }
+    return $result;
+}
 $page = new DemoPage();
 
 $form = new InputForm();
@@ -24,7 +32,7 @@ $pf = new PasswordField($f3);
 $f3->setValidator(new PasswordValidator());
 $form->addInput($f3);
 
-$aw2 = new ArrayDataIterator(array("SelectItem1", "SelectItem2", "SelectItem3"));
+$aw2 = new ArrayDataIterator(createArray("selectItem", 5));
 
 $f4 = new DataInput("field4", "Select", 1);
 $scmp = new SelectField($f4);
@@ -34,7 +42,7 @@ $scmp->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
 $form->addInput($f4);
 
-$aw3 = new ArrayDataIterator(array("SelectMultiItem1", "SelectMultiItem2", "SelectMultiItem3"));
+$aw3 = new ArrayDataIterator(createArray("selectMultiItem", 8));
 
 $f4m = new DataInput("field4m", "Select Multi", 1);
 $scmp1 = new SelectMultipleField($f4m);
@@ -61,7 +69,7 @@ $f6->setValidator(new EmptyValueValidator());
 new InputProcessor($f6);
 $form->addInput($f6);
 
-$aw = new ArrayDataIterator(array("CheckboxItem1", "CheckboxItem2", "CheckboxItem3"));
+$aw = new ArrayDataIterator(createArray("checkItem", 5));
 
 $f11 = new DataInput("field11", "Checkbox DataSource", 0);
 $f11->setValidator(new EmptyValueValidator());
@@ -74,9 +82,9 @@ $cf2->getItemRenderer()->setLabelKey(ArrayDataIterator::KEY_VALUE);
 
 $form->addInput($f11);
 
-$aw = new ArrayDataIterator(array("CheckboxItem1", "CheckboxItem2", "CheckboxItem3"));
+$aw = new ArrayDataIterator(createArray("checkItemRequired", 5));
 
-$f11 = new DataInput("field11_req", "Checkbox DataSource", 1);
+$f11 = new DataInput("field11_required", "Checkbox DataSource", 1);
 
 $validator = new EmptyValueValidator();
 $f11->setValidator($validator);
@@ -90,7 +98,7 @@ new InputProcessor($f11);
 
 $form->addInput($f11);
 
-$aw1 = new ArrayDataIterator(array("RadioItem1", "RadioItem2", "RadioItem3"));
+$aw1 = new ArrayDataIterator(createArray("radioItem", 3));
 $f12 = new DataInput("field12", "Radiobox DataSource", 1);
 $rf = new RadioField($f12);
 $rf->setIterator($aw1);
@@ -163,6 +171,15 @@ if (isset($_GET["type"])) {
 $proc->process($form);
 
 $page->startRender();
+
+$buttons = new Container(false);
+$buttons->setStyleProperty("display", "block");
+$buttons->setStyleProperty("text-align", "center");
+$buttons->setStyleProperty("padding", "1em");
+$buttons->items()->append(Button::LocationButton("HBox", new URL("?type=hbox")));
+$buttons->items()->append(Button::LocationButton("VBox", new URL("?type=vbox")));
+$buttons->render();
+
 
 $frender->render();
 

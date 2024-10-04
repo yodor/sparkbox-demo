@@ -28,19 +28,19 @@ $page->startRender();
 $cmp->setDataInput($field1);
 $cmp->render();
 
-Button::RenderButton("Show Message", "javascript:showMessageDialog()");
+Button::ActionButton("Show Message", "javascript:showMessageDialog()")->render();
 
 $cmp->setDataInput($field2);
 $cmp->render();
 
-Button::RenderButton("Show Confirm", "javascript:showConfirmDialog()");
+Button::ActionButton("Show Confirm", "javascript:showConfirmDialog()")->render();
 
 $cmp->setDataInput($field3);
 $cmp->render();
 
-Button::RenderButton("Show Input", "javascript:showUserInputDialog()");
+Button::ActionButton("Show Input", "javascript:showUserInputDialog()")->render();
 
-Button::RenderButton("Show JSONFormDialog", "javascript:showJSONFormDialog()");
+Button::ActionButton("Show JSONFormDialog", "javascript:showJSONFormDialog()")->render();
 
 $page->finishRender();
 
