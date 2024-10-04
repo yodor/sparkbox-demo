@@ -66,12 +66,12 @@ class DemoPage extends SparkPage
 
     public function startRender()
     {
+        $main_menu = $this->menu_bar->getMenu();
+        $main_menu->selectActive();
+
         parent::startRender();
 
         echo "\n<!-- startRender DemoPage -->\n";
-
-        $main_menu = $this->menu_bar->getMenu();
-        $main_menu->selectActive();
 
         $this->preferred_title = constructSiteTitle($main_menu->getSelectedPath());
 
