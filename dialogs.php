@@ -13,12 +13,28 @@ class DialogScript extends PageScript
     {
         return <<<JS
 
-        let confirm_dialog = new ConfirmMessageDialog();
-        let user_input = new InputMessageDialog();
-        
         function showUserInputDialog() {
+            let user_input = new InputMessageDialog();
+
+            const message3 = document.querySelector("[name='message3']");
+            user_input.input.value = message3.value;
+            
+            user_input.buttonAction = function (action) {
+
+                    message3.value = user_input.input.value;
+            
+                    if (action == "confirm") {
+            
+                        showAlert("Confirmed: <BR>Value: " + message3.value);
+            
+                    } else if (action == "cancel") {
+            
+                        showAlert("Canceled");
+                    }
+                    user_input.remove();
+            };
             user_input.show();
-            user_input.input().val($("[name='message3']").val());
+            
         }
     
         function showMessageDialog() {
@@ -27,59 +43,37 @@ class DialogScript extends PageScript
         }
     
         function showConfirmDialog() {
+                    
+            let confirm_dialog = new ConfirmMessageDialog();
+
             let message_text = $(".TextArea textarea").val();
             confirm_dialog.setText(message_text);
+            
+            confirm_dialog.buttonAction = function (action) {
+    
+                if (action == "confirm") {
+        
+                    let dialog = showAlert("You pressed confirm");
+                    dialog.buttonAction = function (action) {
+                        dialog.remove();
+                        confirm_dialog.remove();
+                    }
+        
+                } else if (action == "cancel") {
+                    showAlert("You pressed cancel");
+                }
+            };
+            
             confirm_dialog.show();
+            
         }
+        
         function showJSONFormDialog() {
             let dialog = new JSONFormDialog();
             dialog.setResponder("SampleFormResponder");
+            dialog.setTitle("SampleFormResponder");
             dialog.show();
         }
-        
-        onPageLoad(function(){
-                
-                confirm_dialog.initialize();
-            
-                confirm_dialog.buttonAction = function (action) {
-            
-                    if (action == "confirm") {
-            
-                        let dialog = showAlert("You pressed confirm");
-                        dialog.buttonAction = function (action) {
-                            dialog.remove();
-                            confirm_dialog.remove();
-                        }
-            
-                    } else if (action == "cancel") {
-                        showAlert("You pressed cancel");
-                    }
-            
-                }
-            
-                
-                user_input.initialize();
-            
-                user_input.buttonAction = function (action, dialog) {
-            
-                    let input_value = user_input.input().val();
-                    $("[name='message3']").val(input_value);
-            
-                    if (action == "confirm") {
-            
-                        showAlert("Confirmed: <BR>Value: " + input_value);
-            
-                    } else if (action == "cancel") {
-            
-                        showAlert("Canceled");
-                    }
-            
-                    user_input.remove();
-                }
-            
-            
-                
-        });
 JS;
     }
 }
@@ -124,4 +118,3 @@ Button::ActionButton("Show Input", "javascript:showUserInputDialog()")->render()
 Button::ActionButton("Show JSONFormDialog", "javascript:showJSONFormDialog()")->render();
 
 $page->finishRender();
-
