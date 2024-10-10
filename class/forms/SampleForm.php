@@ -13,6 +13,9 @@ class SampleForm extends InputForm {
         $this->addInput($input);
 
         $input = DataInputFactory::Create(DataInputFactory::SESSION_IMAGE, "control3", "SessionImage", 1);
+
+        $input->getProcessor()->setTransactBeanItemLimit(4);
+
         $this->addInput($input);
 
     }
