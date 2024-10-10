@@ -6,8 +6,7 @@ class SampleFormResponder extends JSONFormResponder
 {
     public function __construct()
     {
-        parent::__construct(get_class($this));
-
+        parent::__construct();
     }
 
     protected function createForm(): InputForm

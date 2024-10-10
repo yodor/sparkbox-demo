@@ -3,6 +3,8 @@ include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("dialogs/ConfirmMessageDialog.php");
 include_once("dialogs/InputMessageDialog.php");
+include_once("dialogs/json/JSONFormDialog.php");
+
 include_once("class/responders/json/SampleFormResponder.php");
 include_once("components/PageScript.php");
 
@@ -80,9 +82,14 @@ JS;
 
 $page = new DemoPage();
 
+$responder = new SampleFormResponder();
+
+$json_dialog = new JSONFormDialog();
+$json_dialog->setResponder($responder);
+
 $dialogScript = new DialogScript();
 
-$responder = new SampleFormResponder();
+
 
 $confirm_dialog = new ConfirmMessageDialog();
 $input_dialog = new InputMessageDialog();
