@@ -20,7 +20,7 @@
 /*    z-index: 10;*/
 /*}*/
 
-/*.MenuBar .MenuBarComponent {*/
+/*.MenuBar .ItemList {*/
 /*    display: inline-block;*/
 /*}*/
 
@@ -39,13 +39,13 @@
 /*}*/
 
 
-/*.MenuBar .MenuBarComponent .MenuBarItemRenderer {*/
+/*.MenuBar .ItemList .Item {*/
 /*    display: inline-block;*/
 /*    height: auto;*/
 /*    font-size: 1.2em;*/
 /*}*/
 
 
-/*.MenuBar .MenuBarComponent .MenuSeparator {*/
+/*.MenuBar .ItemList .MenuSeparator {*/
 /*    display: inline-block;*/
 /*}*/

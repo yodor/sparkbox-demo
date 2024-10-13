@@ -1,6 +1,6 @@
 <?php
 include_once("pages/SparkAdminPage.php");
-include_once("components/MenuBarComponent.php");
+include_once("components/MenuBar.php");
 
 class AdminPage extends SparkAdminPage
 {

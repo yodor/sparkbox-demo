@@ -2,51 +2,6 @@
     display: block;
 }
 
-.images {
-    display: inline-block;
-    /*   max-width:400px; */
-    outline: 1px dotted gray;
-    vertical-align: top;
-
-}
-
-.images .image_big {
-    display: block;
-    float: right;
-    margin-left: 10px;
-
-}
-
-.images .image_gallery {
-    display: block;
-    float: left;
-}
-
-.images .image_gallery .list {
-    display: none;
-}
-
-/* .images .image_gallery .list:first-child {
-  display:block;
-}*/
-
-.images .image_gallery .list .item {
-    display: block;
-    width: 110px;
-    height: 110px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-}
-
-.images .image_gallery .list .item[active='1'] {
-    outline: 1px solid red;
-}
-
-.images .image_gallery .list .item IMG {
-    display: block;
-}
-
 .product_details {
     display: inline-table;
     max-width: 400px;

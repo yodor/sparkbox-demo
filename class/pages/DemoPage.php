@@ -2,7 +2,7 @@
 include_once("pages/SparkPage.php");
 
 include_once("utils/menu/MenuItemList.php");
-include_once("components/MenuBarComponent.php");
+include_once("components/MenuBar.php");
 
 include_once("forms/InputForm.php");
 include_once("forms/renderers/FormRenderer.php");
@@ -55,9 +55,9 @@ class DemoPage extends SparkPage
         $item = new MenuItem("Test", LOCAL . "/test.php");
         $menu->append($item);
 
-        $this->menu_bar = new MenuBarComponent($menu);
+        $menu->setName("DemoPage");
 
-        $this->menu_bar->setName("DemoPage");
+        $this->menu_bar = new MenuBar($menu);
 
         $this->head()->addCSS(LOCAL . "/css/DemoPage.css");
 

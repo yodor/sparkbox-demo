@@ -3,7 +3,7 @@ include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("beans/MenuItemsBean.php");
 include_once("utils/menu/BeanMenuFactory.php");
-include_once("components/MenuBarComponent.php");
+include_once("components/MenuBar.php");
 
 function constructSubmenu($item, $level, $max_items, $max_level)
 {
@@ -24,7 +24,6 @@ function constructSubmenu($item, $level, $max_items, $max_level)
 $page = new DemoPage();
 
 $menu = new MenuItemList();
-
 $menu->setName("ConstructedMenu");
 
 for ($a = 0; $a < 1; $a++) {
@@ -38,15 +37,13 @@ for ($a = 0; $a < 1; $a++) {
 
 
 
-$menu_bar = new MenuBarComponent($menu);
-$menu_bar->setName("ConstructedMenu");
-
+$menu_bar = new MenuBar($menu);
 
 $menuFactory = new BeanMenuFactory(new MenuItemsBean(), "menu_title", "menuID");
 
 
-$menu_bar1 = new MenuBarComponent($menuFactory->menu());
-$menu_bar1->setName("MenuItemsBean");
+$menu_bar1 = new MenuBar($menuFactory->menu());
+
 
 
 
