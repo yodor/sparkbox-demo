@@ -40,7 +40,7 @@ class DialogScript extends PageScript
         }
     
         function showMessageDialog() {
-            let message_text = $(".TextField input[type='text']").val();
+            let message_text = document.querySelector(".TextField input[type='text']").value;
             showAlert(message_text);
         }
     
@@ -48,7 +48,7 @@ class DialogScript extends PageScript
                     
             let confirm_dialog = new ConfirmMessageDialog();
 
-            let message_text = $(".TextArea textarea").val();
+            let message_text = document.querySelector(".TextArea textarea").value;
             confirm_dialog.setText(message_text);
             
             confirm_dialog.buttonAction = function (action) {
