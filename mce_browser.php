@@ -15,7 +15,6 @@ $handler->setSection("mce_image_demo", "text");
 $handler->setOwnerID(-1);
 
 $form_render = new FormRenderer($form);
-$form_render->setLayout(FormRenderer::FIELD_VBOX);
 $form_render->getSubmitButton()->setContents("Preview");
 
 $proc = new FormProcessor();

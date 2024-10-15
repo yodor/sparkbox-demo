@@ -159,13 +159,12 @@ $form->addInput($f19);
 
 $frender = new FormRenderer($form);
 
-$frender->setLayout(FormRenderer::FIELD_HBOX);
 
 $proc = new FormProcessor();
 
 if (isset($_GET["type"])) {
-    if (strcmp($_GET["type"], "vbox")==0) {
-        $frender->setLayout(FormRenderer::FIELD_VBOX);
+    if (strcmp($_GET["type"], "hbox")==0) {
+        $frender->setLayout(FormRenderer::LAYOUT_HBOX);
     }
 }
 $proc->process($form);

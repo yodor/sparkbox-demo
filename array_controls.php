@@ -109,7 +109,6 @@ $form->addInput($timeInput);
 $form_render = new FormRenderer($form);
 $form_render->setAttribute("name", "myform");
 $form_render->setAttribute("id", "myform");
-$form_render->setLayout(FormRenderer::FIELD_HBOX);
 
 $form->setProcessor(new FormProcessor());
 
