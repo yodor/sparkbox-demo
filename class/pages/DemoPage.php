@@ -69,13 +69,9 @@ class DemoPage extends SparkPage
         $main_menu = $this->menu_bar->getMenu();
         $main_menu->selectActive();
 
+        $this->setTitle(constructSiteTitle($main_menu->getSelectedPath()));
+
         parent::startRender();
-
-        echo "\n<!-- startRender DemoPage -->\n";
-
-        $this->preferred_title = constructSiteTitle($main_menu->getSelectedPath());
-
-        echo "<div align=center>";
 
         $this->menu_bar->render();
 
@@ -87,10 +83,6 @@ class DemoPage extends SparkPage
     {
 
         echo "</div>"; //main_content
-        echo "</div>"; //align=center
-
-        echo "\n";
-        echo "\n<!-- finishRender DemoPage-->\n";
 
         parent::finishRender();
 

@@ -1,9 +1,0 @@
-@media (max-width: 834px) {
-    .column.details .product_details {
-        display: block;
-        float: none;
-        margin-left: 0px;
-        margin-top: 10px;
-        max-width: inherit;
-    }
-}

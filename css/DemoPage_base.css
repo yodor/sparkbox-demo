@@ -1,92 +1,53 @@
 body {
     background-color: #ababab;
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-items: center;
+
+    gap:1em;
+    flex-wrap:wrap;
+    box-sizing:border-box;
+}
+body * {
+    min-width:0;
 }
 
 .main_content {
 
-    max-width: 1024px;
-
-    text-align: left;
-
-    display: inline-block;
-
     background: #eee;
 
     border-radius: 0.5em;
-    padding: 0.5em;
 
     box-sizing: border-box;
 
-    margin-top: 1em;
+    display:inline-flex;
+    flex-direction:column;
 
+    align-items:flex-start;
+    justify-items: center;
+
+    flex-wrap:wrap;
+
+    padding:0.5em;
 }
 
 
-.main_content .version_label {
-    text-align: right;
-
+.main_content * {
+    min-width:0;
 }
 
-/* DynamicPages - content/index.php */
-.DynamicPagesBean {
-    display: block;
-    overflow: hidden;
+body.dialogs .main_content {
+    display:grid;
+    justify-items: stretch;
+    gap:0.5em;
 }
+body.dialogs .main_content .ColorButton {
 
-.DynamicPagesBean .photo {
-
-    display: block;
+    justify-self:flex-end;
 }
+body.dialogs .main_content .InputComponent {
 
-.DynamicPagesBean .photo IMG {
-    /*   height:160px; */
-    display: block;
-    width: 100%;
-}
-
-.DynamicPagesBean .PagePhotos {
-    max-height: 80px;
-    display: block;
-}
-
-.DynamicPagesBean .PagePhotos IMG {
-    height: 80px;
-    display: inline-block;
-}
-
-.DynamicPagesBean .item_title {
-    font-size: 18px;
-    display: block;
-    padding-top: 15px;
-
-}
-
-.DynamicPagesBean .content {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-
-
-
-/* IE < 8 */
-.DemoPage.dialogs .main_content .ColorButton {
-    float:right;
-    clear:both;
-    margin-bottom:1em;
-}
-.DemoPage.dialogs .main_content .InputComponent {
-    margin-bottom:0.5em;
-    clear:both;
-}
-.DemoPage.dialogs .main_content .InputLabel {
-    display:block;
-}
-
-.DemoPage.mce_browser FORM {
-    width:100%;
-}
-.DemoPage.mce_browser .MCETextArea {
-
-    min-height:480px;
+    display:grid;
 }

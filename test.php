@@ -5,12 +5,9 @@ include_once("components/Image.php");
 
 $page = new DemoPage();
 
-
-
 $page->startRender();
+?>
 
-
-
+<?php
 $page->finishRender();
-
 ?>
