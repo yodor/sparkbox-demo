@@ -83,7 +83,7 @@ $phoneField = new ArrayDataInput("phoneField", "Phone", 1);
 $phoneField->setValidator(new PhoneValidator());
 //
 new ArrayField(new PhoneField($phoneField));
-new PhoneInput($phoneField);
+
 
 $form->addInput($phoneField);
 //
@@ -92,7 +92,7 @@ $form->addInput($phoneField);
 $dateField = new ArrayDataInput("dateField", "Date", 1);
 $dateField->setValidator(new DateValidator());
 new ArrayField(new DateField($dateField));
-new DateInput($dateField);
+
 
 $form->addInput($dateField);
 //
@@ -101,7 +101,7 @@ $form->addInput($dateField);
 $timeInput = new ArrayDataInput("timeField", "Time", 1);
 $timeInput->setValidator(new TimeValidator());
 new ArrayField(new TimeField($timeInput));
-new TimeInput($timeInput);
+
 
 $form->addInput($timeInput);
 

@@ -2,9 +2,9 @@
 include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("forms/InputForm.php");
-include_once("iterators/ArrayDataIterator.php");
 include_once("input/DataInputFactory.php");
-include_once ("beans/MenuItemsBean.php");
+include_once("beans/MenuItemsBean.php");
+include_once("iterators/ArrayDataIterator.php");
 
 function createArray($value, $count) : array
 {
@@ -112,19 +112,19 @@ $form->addInput($f12);
 $f7 = new DataInput("field7", "Date", 0);
 $df = new DateField($f7);
 $f7->setValidator(new DateValidator());
-new DateInput($f7);
+
 $form->addInput($f7);
 
 $f8 = new DataInput("field8", "Time", 1);
 $tf = new TimeField($f8);
 $f8->setValidator(new TimeValidator());
-new TimeInput($f8);
+
 $form->addInput($f8);
 
 $f9 = new DataInput("field9", "Phone", 1);
 $pf = new PhoneField($f9);
 $f9->setValidator(new PhoneValidator());
-new PhoneInput($f9);
+
 $form->addInput($f9);
 
 $f15 = new DataInput("field15", "Hidden", 0);
@@ -172,11 +172,13 @@ $proc->process($form);
 $page->startRender();
 
 $buttons = new Container(false);
-$buttons->setStyleProperty("display", "block");
-$buttons->setStyleProperty("text-align", "center");
-$buttons->setStyleProperty("padding", "1em");
-$buttons->items()->append(Button::LocationButton("HBox", new URL("?type=hbox")));
+$buttons->setStyle("display", "flex");
+$buttons->setStyle("gap", "1em");
+$buttons->setStyle("padding", "1em");
+
 $buttons->items()->append(Button::LocationButton("VBox", new URL("?type=vbox")));
+$buttons->items()->append(Button::LocationButton("HBox", new URL("?type=hbox")));
+
 $buttons->render();
 
 
