@@ -2,6 +2,7 @@
 include_once("pages/SparkAdminPage.php");
 include_once("components/MenuBar.php");
 
+
 class AdminPage extends SparkAdminPage
 {
 
@@ -9,6 +10,19 @@ class AdminPage extends SparkAdminPage
     {
         parent::__construct();
 
+    }
+
+    protected function initMainMenu() : array
+    {
+        $menu = array();
+
+
+        $menu[] = new MenuItem("Съдържание", ADMIN_LOCAL . "/content/index.php", "class:icon_content");
+
+        $menu[] = new MenuItem("Настройки", ADMIN_LOCAL . "/settings/index.php", "class:icon_settings");
+
+
+        return $menu;
     }
 
 }
