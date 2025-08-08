@@ -64,7 +64,7 @@ class DemoPage extends SparkPage
 
     }
 
-    public function startRender()
+    public function startRender(): void
     {
         $main_menu = $this->menu_bar->getMenu();
         $main_menu->selectActive();
@@ -79,7 +79,7 @@ class DemoPage extends SparkPage
 
     }
 
-    public function finishRender()
+    public function finishRender(): void
     {
 
         echo "</div>"; //main_content
