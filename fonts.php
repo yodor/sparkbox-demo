@@ -4,7 +4,7 @@ include_once("session.php");
 include_once("class/pages/DemoPage.php");
 
 $page = new DemoPage();
-$page->head()->addCSS(LOCAL . "/css/fonts.css");
+$page->head()->addCSS(Spark::Get(Config::LOCAL) . "/css/fonts.css");
 
 $page->startRender();
 

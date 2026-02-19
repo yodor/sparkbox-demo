@@ -7,11 +7,11 @@ include_once("beans/NewsItemsBean.php");
 include_once("components/PublicationsComponent.php");
 
 $page = new DemoPage();
-$page->head()->addCSS(LOCAL . "/css/news.css");
+$page->head()->addCSS(Spark::Get(Config::LOCAL)  . "/css/news.css");
 
 $bean = new NewsItemsBean();
 
-$pac = new PublicationsComponent($bean, LOCAL . "/news.php");
+$pac = new PublicationsComponent($bean, Spark::Get(Config::LOCAL)  . "/news.php");
 
 $pac->processInput();
 

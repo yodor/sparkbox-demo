@@ -7,7 +7,7 @@ $page = new DemoPage();
 
 $form = new InputForm();
 
-$input = DataInputFactory::Create(DataInputFactory::MCE_TEXTAREA, "text", "Text", 1);
+$input = DataInputFactory::Create(InputType::MCE_TEXTAREA, "text", "Text", 1);
 $form->addInput($input);
 $handler = $input->getRenderer()->getImageBrowser()->getResponder();
 
@@ -29,7 +29,7 @@ echo "<div class='Caption'>Result</div>";
 //echo "<HR>";
 //echo attributeValue($form->getInput("text")->getValue());
 echo "<HR>";
-echo mysql_real_unescape_string($input->getValue());
+echo DBConnections::Open()->escape($input->getValue());
 
 $page->finishRender();
 ?>

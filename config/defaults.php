@@ -1,9 +1,12 @@
 <?php
 
-$defines->set("SITE_TITLE", "SparkBox Demo");
+include_once("config.php");
 
-$defines->set("TRANSLATOR_ENABLED", TRUE);
-$defines->set("DB_ENABLED", TRUE);
-$defines->set("DEFAULT_LOCALE", "bg-bg");
-$defines->set("PAGE_CACHE_ENABLED", FALSE);
+
+Spark::Set(Config::SITE_TITLE, "SparkBox Demo");
+
+Spark::Set(Config::TRANSLATOR_ENABLED, TRUE);
+Spark::Set(Config::DB_ENABLED, TRUE);
+Spark::Set(Config::DEFAULT_LOCALE, "bg-bg");
+Spark::Set(Config::PAGE_CACHE_ENABLED, FALSE);
 ?>

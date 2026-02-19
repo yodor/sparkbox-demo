@@ -14,7 +14,7 @@ class SampleFormResponder extends JSONFormResponder
         return new SampleForm();
     }
 
-    protected function onProcessSuccess(JSONResponse $resp)
+    protected function onProcessSuccess(JSONResponse $resp) : void
     {
         parent::onProcessSuccess($resp);
         //no output here means the operation is finished and dialog should be closed

@@ -131,11 +131,11 @@ $f15 = new DataInput("field15", "Hidden", 0);
 $hf = new HiddenField($f15);
 $form->addInput($f15);
 
-$f17 = DataInputFactory::Create(DataInputFactory::CAPTCHA_TEXT, "captcha_text", "Spam Protection", 1);
+$f17 = DataInputFactory::Create(InputType::CAPTCHA_TEXT, "captcha_text", "Spam Protection", 1);
 $form->addInput($f17);
 
 
-$f18 = DataInputFactory::Create(DataInputFactory::CHECKBOX_TREEVIEW, "checkbox_treeview", "Checkbox Treeview", 1);
+$f18 = DataInputFactory::Create(InputType::CHECKBOX_TREEVIEW, "checkbox_treeview", "Checkbox Treeview", 1);
 
 $bean = new MenuItemsBean();
 $f18->getRenderer()->setIterator(new SQLQuery($bean->selectTree(array("menu_title")), $bean->key(), $bean->getTableName()));
@@ -148,7 +148,7 @@ $ir->setValueKey("menuID");
 $form->addInput($f18);
 
 
-$f19 = DataInputFactory::Create(DataInputFactory::SLIDER, "sliderName", "Slider Example", 1);
+$f19 = DataInputFactory::Create(InputType::SLIDER, "sliderName", "Slider Example", 1);
 $field = $f19->getRenderer();
 if ($field instanceof SliderField) {
     $field->setMinimum(10);

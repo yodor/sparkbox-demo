@@ -25,11 +25,11 @@ class DialogScript extends PageScript
 
                     message3.value = user_input.input.value;
             
-                    if (action == "confirm") {
+                    if (action === "confirm") {
             
                         showAlert("Confirmed: <BR>Value: " + message3.value);
             
-                    } else if (action == "cancel") {
+                    } else if (action === "cancel") {
             
                         showAlert("Canceled");
                     }
@@ -53,7 +53,7 @@ class DialogScript extends PageScript
             
             confirm_dialog.buttonAction = function (action) {
     
-                if (action == "confirm") {
+                if (action === "confirm") {
         
                     let dialog = showAlert("You pressed confirm");
                     dialog.buttonAction = function (action) {
@@ -61,7 +61,7 @@ class DialogScript extends PageScript
                         confirm_dialog.remove();
                     }
         
-                } else if (action == "cancel") {
+                } else if (action === "cancel") {
                     showAlert("You pressed cancel");
                 }
             };
@@ -94,13 +94,13 @@ $dialogScript = new DialogScript();
 $confirm_dialog = new ConfirmMessageDialog();
 $input_dialog = new InputMessageDialog();
 
-$field1 = DataInputFactory::CREATE(DataInputFactory::TEXT, "message1", "Message", FALSE);
+$field1 = DataInputFactory::CREATE(InputType::TEXT, "message1", "Message", FALSE);
 $field1->setValue("Sample message text");
 
-$field2 = DataInputFactory::CREATE(DataInputFactory::TEXTAREA, "message2", "Confirmation Message", FALSE);
+$field2 = DataInputFactory::CREATE(InputType::TEXTAREA, "message2", "Confirmation Message", FALSE);
 $field2->setValue("Sample confirmation message text");
 
-$field3 = DataInputFactory::CREATE(DataInputFactory::TEXT, "message3", "User Input", FALSE);
+$field3 = DataInputFactory::CREATE(InputType::TEXT, "message3", "User Input", FALSE);
 $field3->setValue("");
 
 $cmp = new InputComponent();

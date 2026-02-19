@@ -7,7 +7,7 @@ $auth->logout();
 Session::Destroy();
 
 
-header("Location: " . ADMIN_LOCAL . "/");
+header("Location: " . Spark::Get(Config::ADMIN_LOCAL)  . "/");
 exit;
 
 ?>
