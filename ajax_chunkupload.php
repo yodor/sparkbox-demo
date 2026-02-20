@@ -10,11 +10,11 @@ $page = new DemoPage();
 $form = new InputForm();
 
 
-$input = DataInputFactory::Create(InputType::SESSION_FILE, "document", "Chunk File Upload Document", 1);
-$chunk_size = (5 * 1024 * 1024);//5MB
+$input = DataInputFactory::Create(InputType::SESSION_CHUNKED_FILE, "document", "Chunk File Upload Document", 1);
+$chunk_size = (2 * 1024 * 1024);//5MB
 //debug
-$chunk_size = (5 * 1024 );//5KB
-$input->getRenderer()->setAttribute("chunk_size", $chunk_size);
+//$chunk_size = (5 * 1024 );//5KB
+$input->getRenderer()->input()->setAttribute("chunk_size", $chunk_size);
 $form->addInput($input);
 
 $form_render = new FormRenderer($form);
