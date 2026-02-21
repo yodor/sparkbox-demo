@@ -1,5 +1,4 @@
 <?php
-include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("forms/InputForm.php");
 include_once("input/DataInputFactory.php");

@@ -17,9 +17,9 @@ class AdminPage extends SparkAdminPage
         $menu = array();
 
 
-        $menu[] = new MenuItem("Съдържание", ADMIN_LOCAL . "/content/index.php", "class:icon_content");
+        $menu[] = new MenuItem("Съдържание", Spark::Get(Config::ADMIN_LOCAL) . "/content/index.php", "class:icon_content");
 
-        $menu[] = new MenuItem("Настройки", ADMIN_LOCAL . "/settings/index.php", "class:icon_settings");
+        $menu[] = new MenuItem("Настройки", Spark::Get(Config::ADMIN_LOCAL) . "/settings/index.php", "class:icon_settings");
 
 
         return $menu;
