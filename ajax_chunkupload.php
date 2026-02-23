@@ -26,5 +26,7 @@ $page->startRender();
 
 $form_render->render();
 
+echo "Value:<HR>";
+var_dump($form->getInput("document")->getValue());
+echo "<hr>";
 $page->finishRender();
-?>
