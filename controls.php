@@ -132,7 +132,7 @@ $frender = new FormRenderer($form);
 $proc = new FormProcessor();
 
 if (isset($_GET["type"])) {
-    if (strcmp($_GET["type"], "hbox")==0) {
+    if (strcmp($_GET["type"], "hbox")===0) {
         $frender->setLayout(FormRenderer::LAYOUT_HBOX);
     }
 }
