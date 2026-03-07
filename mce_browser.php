@@ -29,7 +29,7 @@ echo "<div class='Caption'>Result</div>";
 //echo "<HR>";
 //echo attributeValue($form->getInput("text")->getValue());
 echo "<HR>";
-echo DBConnections::Open()->escape($input->getValue());
+echo DBConnections::Driver()->escape($input->getValue());
 
 $page->finishRender();
 ?>
