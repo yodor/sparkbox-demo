@@ -1,5 +1,4 @@
 <?php
-include_once("session.php");
 include_once("class/pages/DemoPage.php");
 include_once("beans/MenuItemsBean.php");
 include_once("utils/menu/BeanMenuFactory.php");

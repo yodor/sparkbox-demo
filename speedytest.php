@@ -1,5 +1,4 @@
 <?php
-include_once("session.php");
 include_once("storage/CacheFile.php");
 
 abstract class CourierConnector
