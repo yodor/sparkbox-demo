@@ -28,7 +28,7 @@ echo "<div class='Caption'>Result</div>";
 //echo "<HR>";
 //echo attributeValue($form->getInput("text")->getValue());
 echo "<HR>";
-echo DBConnections::Driver()->escape($input->getValue());
+echo $input->getValue();
 
 $page->finishRender();
 ?>
