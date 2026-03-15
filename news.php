@@ -23,7 +23,7 @@ echo "<div class='column main'>";
 $arr = $pac->getSelection();
 if (count($arr)>0) {
     $qry = $pac->getBean()->query(...$pac->getSelectionColumns());
-    $qry->select->where()->add($bean->key(), "(" . implode(",", $arr) . ")", " IN ");
+    $qry->stmt->where()->add($bean->key(), "(" . implode(",", $arr) . ")", " IN ");
     $qry->exec();
 
     while ($item = $qry->next()) {
