@@ -10,7 +10,7 @@ $page = new DemoPage();
 $bean = new GalleryPhotosBean();
 $qry = $bean->query();
 $qry->stmt->order_by = " position ASC ";
-$qry->stmt->fields()->set($bean->key());
+$qry->stmt->set($bean->key());
 
 $item = new GalleryTapeItem();
 $item->setPhotoSize(-1,160);
