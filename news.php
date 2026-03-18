@@ -23,7 +23,8 @@ echo "<div class='column main'>";
 $arr = $pac->getSelection();
 if (count($arr)>0) {
     $qry = $pac->getBean()->query(...$pac->getSelectionColumns());
-    $qry->stmt->where()->add($bean->key(), "(" . implode(",", $arr) . ")", " IN ");
+    $inlist = $qry->stmt->bindList($arr);
+    $qry->stmt->where()->add("{$bean->key()} IN ($inlist)");
     $qry->exec();
 
     while ($item = $qry->next()) {
@@ -39,6 +40,7 @@ if (count($arr)>0) {
         echo "<div class='contents'>" . $item["content"] . "</div>";
         echo "</div>"; //item
     }
+    $qry->free();
 }
 
 echo "</div>"; //column_main
