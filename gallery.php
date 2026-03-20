@@ -9,7 +9,7 @@ $page = new DemoPage();
 
 $bean = new GalleryPhotosBean();
 $qry = $bean->query();
-$qry->stmt->order_by = " position ASC ";
+$qry->stmt->order("position", OrderDirection::ASC);
 $qry->stmt->set($bean->key());
 
 $item = new GalleryTapeItem();
