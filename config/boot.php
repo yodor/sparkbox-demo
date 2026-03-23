@@ -6,5 +6,3 @@
 
 //define("DEBUG_LEVEL", 1);
 define("REQUEST_THROTTLE_USERAGENT", "meta-externalagent|facebookexternalhit|SemrushBot|Barkrowler|bingbot|AwarioBot|link");
-define("REQUEST_THROTTLE_SECONDS", 120);
-define("REQUEST_THROTTLE_CONNCOUNT", 1);
