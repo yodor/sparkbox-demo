@@ -8,9 +8,8 @@ $page = new DemoPage();
 
 
 $bean = new GalleryPhotosBean();
-$qry = $bean->query();
+$qry = $bean->query($bean->key());
 $qry->stmt->order("position", OrderDirection::ASC);
-$qry->stmt->set($bean->key());
 
 $item = new GalleryTapeItem();
 $item->setPhotoSize(-1,160);

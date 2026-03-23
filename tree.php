@@ -13,7 +13,7 @@ $bean = new MenuItemsBean();
 $ir = new TextTreeItem();
 
 $view = new NestedSetTreeView();
-$view->setIterator(new SelectQuery($bean->selectTree(array("menu_title")), $bean->key(), $bean->getTableName()));
+$view->setIterator(new SelectQuery($bean->selectTree(array("menu_title")), $bean->key(), $bean->table()));
 $view->setItemRenderer($ir);
 
 $ir->setLabelKey("menu_title");
