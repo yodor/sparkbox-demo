@@ -1,3 +1,53 @@
 AddHandler ${application/x-httpd-saturnosoftbiz-php83} .php .php5 .phtml .php7 .php8
 ExpiresActive On
 ExpiresDefault "modification"
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Маркираме заявката с променлива на средата директно в RewriteRule
+    RewriteRule ^assets/(.*)$ sparkboot.php?StorageRequest=1&route=$1 [E=IS_SPARK_ASSET:1,QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Прилагаме дефолтни правила за кеш само ако:
+    # 1. НЕ е Spark Asset (env REDIRECT_IS_SPARK_ASSET е празна)
+    # 2. И НЕ е PHP файл
+    <If "-z env('REDIRECT_IS_SPARK_ASSET') && !( %{REQUEST_URI} =~ /\.php$/ )">
+        Header set Cache-Control "public, must-revalidate, max-age=0"
+        # По избор за максимална чистота:
+        Header unset Expires
+    </If>
+</IfModule>
+
+<IfModule mod_expires.c>
+    # Изключваме автоматичните Expires за Spark асетите, за да не дублираме хедъри
+    ExpiresActive Off env=REDIRECT_IS_SPARK_ASSET
+</IfModule>
