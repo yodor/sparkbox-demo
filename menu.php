@@ -4,7 +4,7 @@ include_once("beans/MenuItemsBean.php");
 include_once("utils/menu/BeanMenuFactory.php");
 include_once("components/MenuBar.php");
 
-function constructSubmenu($item, $level, $max_items, $max_level)
+function constructSubmenu($item, $level, $max_items, $max_level) : void
 {
     $level++;
     $max_items--;
@@ -23,7 +23,7 @@ function constructSubmenu($item, $level, $max_items, $max_level)
 $page = new DemoPage();
 
 $menu = new MenuItemList();
-$menu->setName("ConstructedMenu");
+
 
 for ($a = 0; $a < 1; $a++) {
     $item = new MenuItem("MenuItem " . ($a + 1), "menu.php");
@@ -37,13 +37,11 @@ for ($a = 0; $a < 1; $a++) {
 
 
 $menu_bar = new MenuBar($menu);
+$menu_bar->setName("ConstructedMenu");
 
 $menuFactory = new BeanMenuFactory(new MenuItemsBean(), "menu_title", "menuID");
-
-
 $menu_bar1 = new MenuBar($menuFactory->menu());
-
-
+$menu_bar1->setName("BeanMenu");
 
 
 $page->startRender();
@@ -57,5 +55,3 @@ $menu_bar1->render();
 echo "<div class=clear></div>";
 
 $page->finishRender();
-
-?>

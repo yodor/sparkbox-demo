@@ -22,19 +22,17 @@ class DemoPage extends SparkPage
         $menu = new MenuItemList();
 
 
-        $item = new MenuItem("Controls", Spark::Get(Config::LOCAL) . "/controls.php");
+        $mnuControls = new MenuItem("Controls", Spark::Get(Config::LOCAL) . "/controls.php");
+        $menu->append($mnuControls);
 
         $item1 = new MenuItem("Array Controls", Spark::Get(Config::LOCAL) . "/array_controls.php");
-        $item->append($item1);
+        $mnuControls->append($item1);
         $item2 = new MenuItem("AJAX Upload", Spark::Get(Config::LOCAL) . "/ajax_upload.php");
-        $item->append($item2);
+        $mnuControls->append($item2);
         $item3 = new MenuItem("AJAX Chunk Upload", Spark::Get(Config::LOCAL) . "/ajax_chunkupload.php");
-        $item->append($item3);
-
-        $item3 = new MenuItem("Plain Upload", Spark::Get(Config::LOCAL) . "/upload_controls.php");
-        $item->append($item3);
-
-        $menu->append($item);
+        $mnuControls->append($item3);
+        $item4 = new MenuItem("Plain Upload", Spark::Get(Config::LOCAL) . "/upload_controls.php");
+        $mnuControls->append($item4);
 
 
         $item = new MenuItem("Dialogs", Spark::Get(Config::LOCAL) . "/dialogs.php");

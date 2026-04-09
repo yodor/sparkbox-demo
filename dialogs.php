@@ -5,17 +5,19 @@ include_once("dialogs/InputMessageDialog.php");
 include_once("dialogs/json/JSONFormDialog.php");
 
 include_once("class/responders/json/SampleFormResponder.php");
-include_once("components/PageScript.php");
+include_once("components/InlineScript.php");
 
-class DialogScript extends PageScript
+class DialogScript extends InlineScript implements IPageComponent
 {
 
-    public function code(): string
+    protected function finalize(): void
     {
-        return <<<JS
+        $code = <<<JS
 
         function showUserInputDialog() {
             let user_input = new InputMessageDialog();
+            user_input.initialize();
+
 
             const message3 = document.querySelector("[name='message3']");
             user_input.input.value = message3.value;
@@ -76,6 +78,8 @@ class DialogScript extends PageScript
             dialog.show();
         }
 JS;
+        $this->setCode($code);
+        parent::finalize();
     }
 }
 
@@ -93,13 +97,13 @@ $dialogScript = new DialogScript();
 $confirm_dialog = new ConfirmMessageDialog();
 $input_dialog = new InputMessageDialog();
 
-$field1 = DataInputFactory::CREATE(InputType::TEXT, "message1", "Message", FALSE);
+$field1 = DataInputFactory::Create(InputType::TEXT, "message1", "Message", FALSE);
 $field1->setValue("Sample message text");
 
-$field2 = DataInputFactory::CREATE(InputType::TEXTAREA, "message2", "Confirmation Message", FALSE);
+$field2 = DataInputFactory::Create(InputType::TEXTAREA, "message2", "Confirmation Message", FALSE);
 $field2->setValue("Sample confirmation message text");
 
-$field3 = DataInputFactory::CREATE(InputType::TEXT, "message3", "User Input", FALSE);
+$field3 = DataInputFactory::Create(InputType::TEXT, "message3", "User Input", FALSE);
 $field3->setValue("");
 
 $cmp = new InputComponent();

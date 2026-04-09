@@ -1,7 +1,17 @@
 <?php
 include_once("class/pages/DemoPage.php");
 include_once("iterators/ArrayDataIterator.php");
-
+include_once("input/DataInputFactory.php");
+include_once("input/renderers/TextField.php");
+include_once("input/renderers/TextArea.php");
+include_once("input/renderers/SelectField.php");
+include_once("input/renderers/CheckField.php");
+include_once("input/validators/PhoneValidator.php");
+include_once("input/renderers/PhoneField.php");
+include_once("input/validators/DateValidator.php");
+include_once("input/renderers/DateField.php");
+include_once("input/validators/TimeValidator.php");
+include_once("input/renderers/TimeField.php");
 $page = new DemoPage();
 
 $form = new InputForm();
