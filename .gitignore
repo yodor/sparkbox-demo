@@ -4,6 +4,8 @@ sparkfront
 /sparkfront
 /session.php
 /config/dbconfig.php
+/config/mailer.php
+.user.ini
 *.zip
 .ftpquota
 .well-known
