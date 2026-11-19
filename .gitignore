@@ -1,13 +1,10 @@
 php*error*
 error*log
-sparkfront
 /sparkfront
-/session.php
+/admin
+/pages
+/news
+/faq
 /config/dbconfig.php
-/config/mailer.php
-.user.ini
-*.zip
-.ftpquota
-.well-known
 .idea
 .user.ini
