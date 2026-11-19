@@ -1,94 +1,54 @@
 <?php
-include_once("pages/SparkPage.php");
-
+include_once("pages/SparkSitePage.php");
 include_once("utils/menu/MenuItemList.php");
-include_once("components/MenuBar.php");
+include_once("utils/menu/MenuItem.php");
 
-include_once("forms/InputForm.php");
-include_once("forms/renderers/FormRenderer.php");
-include_once("forms/processors/FormProcessor.php");
-include_once("input/DataInputFactory.php");
-
-class DemoPage extends SparkPage
+/**
+ * The frame of the demo - the core site frame (SparkSitePage) with the menu of the demo pages (built here, not in
+ * the database) and the demo css. The page class of the main, pages, news and faq modules.
+ */
+class DemoPage extends SparkSitePage
 {
-
-    protected MenuBar $menu_bar;
-
     public function __construct()
     {
-
         parent::__construct();
+        $this->head()->addCSS(Spark::Get(Config::LOCAL) . "/css/demo.css");
+    }
 
+    protected function headerLine() : string
+    {
+        return "The core components of SparkBox, each on a page";
+    }
+
+    protected function createMenu() : MenuItemList
+    {
+        $local = Spark::Get(Config::LOCAL);
         $menu = new MenuItemList();
 
+        $menu->append(new MenuItem("Home", $local . "/"));
 
-        $mnuControls = new MenuItem("Controls", Spark::Get(Config::LOCAL) . "/controls.php");
-        $menu->append($mnuControls);
+        $controls = new MenuItem("Forms", $local . "/controls");
+        $controls->append(new MenuItem("Input Controls", $local . "/controls"));
+        $controls->append(new MenuItem("Array Controls", $local . "/controls/arrays"));
+        $controls->append(new MenuItem("Uploads", $local . "/controls/uploads"));
+        $controls->append(new MenuItem("Text Editor", $local . "/controls/editor"));
+        $menu->append($controls);
 
-        $item1 = new MenuItem("Array Controls", Spark::Get(Config::LOCAL) . "/array_controls.php");
-        $mnuControls->append($item1);
-        $item2 = new MenuItem("AJAX Upload", Spark::Get(Config::LOCAL) . "/ajax_upload.php");
-        $mnuControls->append($item2);
-        $item3 = new MenuItem("AJAX Chunk Upload", Spark::Get(Config::LOCAL) . "/ajax_chunkupload.php");
-        $mnuControls->append($item3);
-        $item4 = new MenuItem("Plain Upload", Spark::Get(Config::LOCAL) . "/upload_controls.php");
-        $mnuControls->append($item4);
+        $menu->append(new MenuItem("Dialogs", $local . "/dialogs"));
 
+        $views = new MenuItem("Views", $local . "/gallery");
+        $views->append(new MenuItem("Image Gallery", $local . "/gallery"));
+        $views->append(new MenuItem("Tree View", $local . "/tree"));
+        $views->append(new MenuItem("Menus", $local . "/menus"));
+        $views->append(new MenuItem("Fragments", $local . "/fragments"));
+        $menu->append($views);
 
-        $item = new MenuItem("Dialogs", Spark::Get(Config::LOCAL) . "/dialogs.php");
-        $menu->append($item);
+        $modules = new MenuItem("Modules", $local . "/news/");
+        $modules->append(new MenuItem("News", $local . "/news/"));
+        $modules->append(new MenuItem("FAQ", $local . "/faq/"));
+        $modules->append(new MenuItem("Admin", $local . "/admin/"));
+        $menu->append($modules);
 
-        $item = new MenuItem("Image Gallery", Spark::Get(Config::LOCAL) . "/gallery.php");
-        $menu->append($item);
-
-        $item = new MenuItem("MCE Image Browser", Spark::Get(Config::LOCAL) . "/mce_browser.php");
-        $menu->append($item);
-
-        $item = new MenuItem("Menus", Spark::Get(Config::LOCAL) . "/menu.php");
-        $menu->append($item);
-
-        $item = new MenuItem("Tree View", Spark::Get(Config::LOCAL) . "/tree.php");
-        $menu->append($item);
-
-        $item = new MenuItem("Publications", Spark::Get(Config::LOCAL) . "/news.php");
-        $menu->append($item);
-
-        $item = new MenuItem("Test", Spark::Get(Config::LOCAL) . "/test.php");
-        $menu->append($item);
-
-        $menu->setName("DemoPage");
-
-        $this->menu_bar = new MenuBar($menu);
-
-        $this->head()->addCSS(Spark::Get(Config::LOCAL) . "/css/DemoPage.css");
-
-
+        return $menu;
     }
-
-    public function startRender(): void
-    {
-        $main_menu = $this->menu_bar->getMenu();
-        $main_menu->selectActive();
-
-        $this->setTitle(Spark::SiteTitle($main_menu->getSelectedPath()));
-
-        parent::startRender();
-
-        $this->menu_bar->render();
-
-        echo "<div class='main_content'>"; //inner contents
-
-    }
-
-    public function finishRender(): void
-    {
-
-        echo "</div>"; //main_content
-
-        parent::finishRender();
-
-    }
-
 }
-
-?>

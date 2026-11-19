@@ -2,13 +2,12 @@
 include_once("responders/json/JSONFormResponder.php");
 include_once("class/forms/SampleForm.php");
 
+/**
+ * The responder of the JSONFormDialog of the dialogs page: the form of the dialog, validated on submit - nothing is
+ * stored
+ */
 class SampleFormResponder extends JSONFormResponder
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     protected function createForm(): InputForm
     {
         return new SampleForm();
@@ -17,9 +16,6 @@ class SampleFormResponder extends JSONFormResponder
     protected function onProcessSuccess(JSONResponse $resp) : void
     {
         parent::onProcessSuccess($resp);
-        //no output here means the operation is finished and dialog should be closed
-        $this->form->getRenderer()->render();
-        $resp->message = "Operation Success";
+        $resp->message = "The form is valid - nothing is stored in this demo";
     }
 }
-?>

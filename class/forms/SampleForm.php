@@ -1,7 +1,12 @@
 <?php
 include_once("forms/InputForm.php");
+include_once("input/DataInputFactory.php");
 
-class SampleForm extends InputForm {
+/**
+ * The form of the JSONFormDialog of the dialogs page (SampleFormResponder)
+ */
+class SampleForm extends InputForm
+{
     public function __construct()
     {
         parent::__construct();
@@ -20,4 +25,3 @@ class SampleForm extends InputForm {
 
     }
 }
-?>

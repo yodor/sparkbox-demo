@@ -1,22 +1,34 @@
 #
-# demo.saturnosoft.org - document root .htaccess (from sparkbox dist/htaccess.dist)
+# SparkBox site .htaccess - template for the document root
+#   cp dist/htaccess.dist <document root>/.htaccess  and replace the _PLACEHOLDERS_
+#
+# PHP settings: web servers running PHP as a module (Apache mod_php, LiteSpeed - e.g. Hostinger) read
+# them from here. PHP-FPM / CGI servers ignore these lines and use .user.ini instead (dist/user.ini.dist).
 #
 <IfModule mod_php.c>
     php_value include_path "/home/u494397679/sparkbox/lib"
     php_value auto_prepend_file "/home/u494397679/domains/saturnosoft.org/public_html/demo/sparkboot.php"
 </IfModule>
-
 <IfModule mod_rewrite.c>
     Options +FollowSymLinks
     RewriteEngine On
-
-    # storage: images and files of beans
+    # storage: images and files of beans - /assets/<route> is answered by sparkbox (storage.php logic)
     RewriteRule ^assets/(.*)$ sparkboot.php?StorageRequest=1&route=$1 [E=IS_SPARK_ASSET:1,QSA,L]
-
-    # versioned CSS / JS (?v=<file time>): cache a year, never revalidate
+    # versioned CSS / JS (?v=<file time>, added by HTMLHead): the URL changes whenever the file changes,
+    # so browsers and the CDN may keep each version for a year without asking again
     RewriteCond %{QUERY_STRING} (^|&)v=
     RewriteRule \.(css|js)$ - [E=SPARK_VERSIONED:1]
+</IfModule>
+<IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable" env=SPARK_VERSIONED
+</IfModule>
 
+# main module (sparkbox/modules/main) - put into the .htaccess of the site root, after the other rewrite rules.
+# Addresses that are not a file or a folder go to the root index.php (Module::Run("main")) as its path.
+# Missing static files keep the server 404 instead of a page.
+# The code and configuration folders of the site are not served (their scripts run only through the modules).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
     RewriteRule ^(class|config)(/|$) - [F,L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -24,6 +36,4 @@
     RewriteRule ^(.*)$ index.php?path=/$1 [QSA,L]
 </IfModule>
 
-<IfModule mod_headers.c>
-    Header set Cache-Control "public, max-age=31536000, immutable" env=SPARK_VERSIONED
-</IfModule>
+# the old addresses: /home.php is redirected by the main module, the projects sections by the projects module

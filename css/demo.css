@@ -1,0 +1,106 @@
+/*
+ * The sparkbox demo - the site css (layer site; its element rules in base): the core frame with a light look
+ */
+@layer base {
+
+body {
+    margin: 0;
+    background-color: #eef1f4;
+    line-height: 1.6;
+}
+
+code {
+    font-size: 0.92em;
+    background-color: var(--theme-surface);
+    padding: 0 0.25em;
+    border-radius: 3px;
+}
+
+}
+
+@layer site {
+
+:root {
+    --theme-accent: #537689;
+    --theme-accent-light: #e6edf1;
+    --theme-accent-dark: #3c5a6b;
+}
+
+.frame {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+}
+
+.site_header {
+    background-color: var(--theme-accent-dark);
+}
+.site_header .home {
+    color: #ffffff;
+}
+
+.demo > .Caption {
+    font-size: 1.8em;
+    margin: 0 0 0.3em 0;
+}
+.demo .intro {
+    max-width: 52em;
+    margin-bottom: 1.2em;
+}
+.demo .heading {
+    font-size: 1.25em;
+    margin: 1.4em 0 0.6em 0;
+}
+.demo .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    margin: 1em 0;
+}
+
+/* the home: the demo pages */
+.demo.home .pages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+.demo.home .page {
+    display: block;
+    padding: 14px 16px;
+    border: 1px solid var(--theme-accent-light);
+    border-radius: 6px;
+    color: var(--theme-text);
+    text-decoration: none;
+}
+.demo.home .page:hover {
+    border-color: var(--theme-accent);
+}
+.demo.home .page .title {
+    font-weight: bold;
+    color: var(--theme-accent-dark);
+}
+.demo.home .page .text {
+    font-size: 0.92em;
+}
+
+/* the dialogs: an input and its button in a row */
+.demo.dialogs .dialog_row {
+    display: flex;
+    align-items: flex-end;
+    gap: 1em;
+    margin-bottom: 0.6em;
+}
+
+/* the text editor */
+.demo.editor .preview {
+    border: 1px dashed var(--theme-accent);
+    padding: 1em;
+    min-height: 3em;
+}
+
+/* the fragments: the box of the loaded content */
+.demo.fragments .fragment_box {
+    border: 1px dashed var(--theme-accent);
+    padding: 1em;
+    min-height: 6em;
+}
+
+}

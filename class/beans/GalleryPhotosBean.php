@@ -1,6 +1,9 @@
 <?php
 include_once("beans/OrderedDataBean.php");
 
+/**
+ * The photos of the gallery page (uploaded in the admin: Demo > Gallery)
+ */
 class GalleryPhotosBean extends OrderedDataBean
 {
 
@@ -8,10 +11,10 @@ class GalleryPhotosBean extends OrderedDataBean
  `gpID` int(11) unsigned NOT NULL AUTO_INCREMENT,
  `photo` longblob NOT NULL,
  `date_upload` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- `caption` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
- `position` int(11) NOT NULL,
+ `caption` text DEFAULT NULL,
+ `position` int(11) NOT NULL DEFAULT 0,
  PRIMARY KEY (`gpID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8";
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
 
     public function __construct()
     {
@@ -19,5 +22,3 @@ class GalleryPhotosBean extends OrderedDataBean
     }
 
 }
-
-?>
