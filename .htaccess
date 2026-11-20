@@ -9,6 +9,7 @@
     php_value include_path "/home/u494397679/sparkbox/lib"
     php_value auto_prepend_file "/home/u494397679/domains/saturnosoft.org/public_html/demo/sparkboot.php"
 </IfModule>
+
 <IfModule mod_rewrite.c>
     Options +FollowSymLinks
     RewriteEngine On
@@ -35,5 +36,3 @@
     RewriteCond %{REQUEST_URI} !\.(css|js|mjs|map|png|jpe?g|gif|webp|avif|svg|ico|woff2?|ttf|otf|eot)$ [NC]
     RewriteRule ^(.*)$ index.php?path=/$1 [QSA,L]
 </IfModule>
-
-# the old addresses: /home.php is redirected by the main module, the projects sections by the projects module
