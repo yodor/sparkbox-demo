@@ -31,7 +31,7 @@ function assertCleanPage(array $response, string $label, int $status = 200) : vo
 }
 
 test("the core front files are linked in the document root (sparkfront)", function () {
-    foreach (array("css/theme.css", "css/MenuBar.css", "css/SparkSitePage.css", "js/ContentFragment.js") as $file) {
+    foreach (array("css/themes/light.css", "css/MenuBar.css", "css/SparkSitePage.css", "js/ContentFragment.js") as $file) {
         assertTrue(is_file(SITE_ROOT . "/sparkfront/" . $file), "sparkfront/$file missing - link sparkbox/sparkfront into the document root");
     }
 });
