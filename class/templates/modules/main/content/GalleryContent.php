@@ -1,4 +1,5 @@
 <?php
+include_once("utils/ImageSizes.php");
 include_once("class/templates/modules/main/content/DemoContent.php");
 include_once("class/beans/GalleryPhotosBean.php");
 include_once("components/GalleryTape.php");
@@ -21,7 +22,7 @@ class GalleryContent extends DemoContent
         $query->stmt->order("position", OrderDirection::ASC);
 
         $item = new GalleryTapeItem();
-        $item->setPhotoSize(-1, 200);
+        $item->setPhotoSize(0, ImageSize::Thumbnail);
         $item->setBeanClass(GalleryPhotosBean::class);
 
         $tape = new GalleryTape();
