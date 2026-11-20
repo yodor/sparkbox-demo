@@ -20,7 +20,7 @@ class DemoHome extends DemoContent
             array("/controls/uploads", "Uploads", "SessionImage and SessionFile uploads over AJAX, and the chunked upload of large files"),
             array("/controls/editor", "Text Editor", "MCETextArea - the HTML editor of the admin with its image browser"),
             array("/dialogs", "Dialogs", "MessageDialog, ConfirmMessageDialog, InputMessageDialog and a JSONFormDialog answered by its JSONFormResponder"),
-            array("/gallery", "Image Gallery", "GalleryTape and ImagePopup over a bean of photos (uploaded in the admin)"),
+            array("/gallery", "Image Gallery", "ImageSlider and ImagePopup over a bean of photos (uploaded in the admin)"),
             array("/tree", "Tree View", "NestedSetTreeView of a NestedSetBean, with checkboxes and the selected node"),
             array("/menus", "Menus", "MenuBar of a MenuItemList built in code, and of the menu of the admin (BeanMenuFactory)"),
             array("/fragments", "Fragments", "ContentFragment - the content of another module path loaded into this page"),
