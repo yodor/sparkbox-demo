@@ -6,5 +6,6 @@ error*log
 /news
 /faq
 /config/dbconfig.php
+/config/mailer.php
 .idea
 .user.ini
