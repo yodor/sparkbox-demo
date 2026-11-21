@@ -17,7 +17,7 @@ Spark::Set(Config::STORAGE_CACHE_ENABLED, true);
 Spark::Set(Config::PAGE_CACHE_ENABLED, false);
 
 //no mail from the demo
-Spark::Set(Config::PHPMAILER_ENABLED, false);
+Spark::Set(Config::PHPMAILER_ENABLED, true);
 
 //the e-mail inputs are not checked for a mail domain (DNS) - nothing is mailed
-Spark::Set(Config::EMAIL_DOMAIN_CHECK, false);
+Spark::Set(Config::EMAIL_DOMAIN_CHECK, true);
