@@ -6,8 +6,6 @@ Spark::Set(Config::SITE_TITLE, "SparkBox Demo");
 Spark::Set(Config::TRANSLATOR_ENABLED, FALSE);
 Spark::Set(Config::DB_ENABLED, TRUE);
 
-Spark::Set(Config::DEFAULT_LANGUAGE, "english");
-Spark::Set(Config::DEFAULT_LANGUAGE_ISO3, "eng");
 Spark::Set(Config::DEFAULT_LOCALE, "en-us");
 
 Spark::Set(Config::IMAGE_UPLOAD_DEFAULT_WIDTH, 1280);
