@@ -15,6 +15,14 @@ class DemoPage extends SparkSitePage
         $this->head()->addCSS(Spark::Get(Config::LOCAL) . "/css/demo.css");
     }
 
+    /**
+     * The SparkBox mark (sparkfront/images/sparkbox) next to the name of the demo
+     */
+    protected function logoURL() : string
+    {
+        return Spark::Get(Config::SPARK_LOCAL) . "/images/sparkbox/sparkbox-mark.svg";
+    }
+
     protected function headerLine() : string
     {
         return "The core components of SparkBox, each on a page";

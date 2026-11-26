@@ -109,3 +109,8 @@ code {
 .demo.gallery .ImageSlider {
     --slider-photo-height: 200px;
 }
+
+/* the SparkBox mark in the header */
+.site_header .logo {
+    height: 64px;
+}
